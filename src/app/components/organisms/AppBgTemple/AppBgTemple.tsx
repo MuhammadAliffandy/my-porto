@@ -28,18 +28,22 @@ const AppBgTemple = () => {
   return (
     <AppContainer
       onMouseMove={handleMouseMove}
-      className="h-screen w-full flex flex-col items-center justify-center  bg-[url('/images/japan-04.svg')] bg-cover relative "
+      className="h-screen w-full flex flex-col items-center justify-center bg-[url('/images/japan-04.svg')] bg-cover relative"
     >
       <AppContainer
         style={{
           bottom: `${-60 - position.y / 30}px`,
           right: `${-50 - position.x / 20}px`,
           left: `${50 - position.x / 20}px`,
+          transition: "all  ease-out", // Smooth transition
         }}
-        className="h-full w-full bg-[url('/images/japan-02.svg')]  absolute"
+        className="h-full w-full bg-[url('/images/japan-02.svg')] absolute"
       />
       <AppContainer
-        style={{ bottom: `0px` }}
+        style={{
+          bottom: `0px`,
+          transition: "all  ease-out", // Smooth transition
+        }}
         className="h-full w-full bg-[url('/images/japan-01.svg')] bg-cover absolute"
       />
       <Image
@@ -50,9 +54,9 @@ const AppBgTemple = () => {
         style={{
           bottom: `${-200 + position.y / 20}px`,
           right: `${-50 - position.x / 20}px`,
-          // left: `${-50 - position.x / 20}px`,
+          transition: "all  ease-out", // Smooth transition
         }}
-        className="absolute  w-[80%]"
+        className="absolute w-[80%]"
       />
     </AppContainer>
   );
