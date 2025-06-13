@@ -15,6 +15,7 @@ import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import AppIconsList from "@/app/components/organisms/AppIconsList/AppIconsList";
 import ProjectView from "../../(project)/project/page";
+import AppChip from "@/app/components/atoms/AppChip/AppChip";
 
 const HomeView = () => {
   const { push } = useRouter();
@@ -22,16 +23,10 @@ const HomeView = () => {
   const [openCarousel, setOpenCarousel] = useState<boolean>(false);
   const [openSide, setOpenSide] = useState<boolean>(false);
   const [showCircle, setShowCircle] = useState<boolean>(false);
-  const [showProject, setShowProject] = useState(false);
 
   const handleProjectClick = (index: number) => {
     dispatch(setProjectId(index));
     setShowCircle(true);
-
-    // Delay tampil ProjectView sampai animasi selesai
-    setTimeout(() => {
-      setShowProject(true);
-    }, 800); // sama seperti durasi animasi
   };
 
   return (
@@ -57,7 +52,7 @@ const HomeView = () => {
         )}
 
         {!openCarousel && <AppHeadtitle title="My" subtitle="Portfolio" />}
-        <AppIconMedsos />
+        {!openCarousel && <AppIconMedsos />}
         {/*  */}
 
         {!openSide && (
@@ -143,11 +138,27 @@ const HomeView = () => {
         {/*  */}
         {openCarousel && (
           <AppContainer className="bg-black/50 w-full h-full flex flex-col p-[20px] gap-[20px] items-center justify-center absolute ">
-            <AppHeadtitle
-              title="My"
-              subtitle="Projects"
-              className="self-start flex gap-[20px] items-stretch justify-start text-shadow-lg"
-            />
+            <AppContainer className="self-start w-full flex items-end justify-between gap-[20px] ">
+              <AppHeadtitle
+                title="My"
+                subtitle="Projects"
+                className="self-start flex gap-[20px] items-stretch justify-start text-shadow-lg !static"
+              />
+              <AppContainer className="flex items-center gap-[10px]">
+                <AppChip
+                  text="3D Phone UI"
+                  href="https://3d-phone.netlify.app/"
+                />
+                <AppChip
+                  text="UI Animation Scroll"
+                  href="https://cartoon-ui.netlify.app/"
+                />
+                <AppChip
+                  text="Hard Layout UI"
+                  href="https://anime-ui-apps.netlify.app/"
+                />
+              </AppContainer>
+            </AppContainer>
 
             <AppContainer className="w-full">
               <AppCarousel>
