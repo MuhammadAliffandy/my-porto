@@ -1,0 +1,175 @@
+[
+  {
+    "title": "Forwardin",
+    "description": "Forwardin is a message automation website that leverages the WhatsApp platform for chat management and automation across multiple devices.",
+    "feature": "User Authentication – Login with Google & JWT Authentication User\nRole Management – Admin, Customer Support, and Agent\nMass Messaging & Automation – Broadcast campaigns, auto-reply, and customer service chatbot\nContact Management – User contact storage and segmentation\nRealtime Messaging – Live communication using WebSocket Device QR\nWhatsApp API – WhatsApp API integration via QR Code\nInteractive UI – Modern design using Material UI with Single Page Application (SPA) navigation",
+    "images": [
+      "/images/project/forwardin/image.png",
+      "/images/project/forwardin/image (1).png",
+      "/images/project/forwardin/image (2).png",
+      "/images/project/forwardin/image (3).png",
+      "/images/project/forwardin/image (4).png",
+      "/images/project/forwardin/image (5).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/forwardin.svg",
+    "type": "web"
+  },
+  {
+    "title": "Planify",
+    "description": "Craftiq is a content management system designed to help SMEs manage their product content across three major social media platforms (Facebook, Instagram, and Twitter ) while streamlining their marketing efforts.",
+    "feature": "Social Media Integration – Manage content across Facebook, Instagram, and Twitter in one platform\n Post Scheduling & Automation – Schedule and automate content posting for better engagement\nContent Management – Organize and categorize product-related content efficiently\nMarketing  Management – Plan and track structured marketing from engagement traffic\nAnalytics & Insights – Monitor performance metrics and audience engagement\nInteractive Dashboard – User-friendly interface with real-time content tracking",
+    "images": [
+      "/images/project/planify/image.png",
+      "/images/project/planify/image (1).png",
+      "/images/project/planify/image (2).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/planify.svg",
+    "type": "web"
+  },
+  {
+    "title": "Satujuta App",
+    "description": "The Satu Juta App Kampung Inggris Indonesia is an online English learning platform designed to help Indonesians learn English through interactive and affordable materials.",
+    "feature": "Implemented UI slicing from Figma designs using the Flutter framework.\nApplied Atomic Design methodology for structured and maintainable component-based development.\nDeveloped UI interactions & animations using advanced Dart algorithms.\nDebugged Flutter UI components and optimized performance through manual testing.\nCollaborated with senior developers in feature development and implementation.",
+    "images": [
+      "/images/project/satujuta/image.png",
+      "/images/project/satujuta/image (1).png",
+      "/images/project/satujuta/image (2).png",
+      "/images/project/satujuta/image (3).png",
+      "/images/project/satujuta/image (4).png",
+      "/images/project/satujuta/image (5).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/satujuta.svg",
+    "type": "mobile"
+  },
+  {
+    "title": "Laundry Net",
+    "description": "LaundryNet is an e-commerce and laundry management application designed to simplify the process for customers to order laundry services online while also helping laundry business owners manage their operations efficiently. The app features an interactive dashboard that provides real-time insights into orders, finances, and business performance.",
+    "feature": "Implemented UI slicing from Figma designs using the Flutter framework.\nApplied Atomic Design methodology for structured and maintainable component-based development.\nDeveloped UI interactions & animations using advanced Dart algorithms.\nDebugged Flutter UI components and optimized performance through manual testing.\nCollaborated with senior developers in feature development and implementation.",
+    "images": [
+      "/images/project/laundry/image.png",
+      "/images/project/laundry/image (1).png",
+      "/images/project/laundry/image (2).png",
+      "/images/project/laundry/image (3).png",
+      "/images/project/laundry/image (4).png",
+      "/images/project/laundry/image (5).png",
+      "/images/project/laundry/image (6).png",
+      "/images/project/laundry/image (7).png",
+      "/images/project/laundry/image (8).png",
+      "/images/project/laundry/image (9).png",
+      "/images/project/laundry/image (10).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/laundry.svg",
+    "type": "mobile"
+  },
+
+  {
+    "title": "SpeakUp App",
+    "description": "SpeakUp is a web platform designed to help individuals who struggle to express themselves openly. It provides a safe space where users can share their thoughts, feelings, and opinions anonymously through short statements, similar to anonymous tweets.",
+    "feature": "Anonymous Posting – Users can freely share statements without identity disclosure.\nCommunity Engagement – Others can react, comment, and interact anonymously.\nUser Dashboard – Personalized dashboard to track posted statements, reactions received, and engagement analytics.\nCross-Platform Access – Responsive design ensuring seamless experience across desktop and mobile devices.\nUser Authentication - Login and registration user",
+    "images": [
+      "/images/project/speakup/image (1).png",
+      "/images/project/speakup/image (2).png",
+      "/images/project/speakup/image (3).png",
+      "/images/project/speakup/image (4).png",
+      "/images/project/speakup/image (5).png",
+      "/images/project/speakup/image (6).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/speakup.svg",
+    "type": "web"
+  },
+  {
+    "title": "Culture Trip",
+    "description": "Culture Trip is a travel e-commerce application designed to help tourists discover interesting destinations, access real-time weather information, and track their journeys seamlessly. With advanced features, this app offers a more structured and interactive travel experience.",
+    "feature": "Camera User – Utilize the camera for user profile \nWeather & Travel Data API – Display real-time weather updates and travel destination recommendations based on live data.\nGoogle Maps Track Record – Record and display users' travel routes from their starting point to their destination using Google Maps API.\nUser Dashboard – A personalized dashboard to view travel history and destination recommendations.\nUser Authentication – Login and registration system for a more personalized and secure experience.",
+    "images": [
+      "/images/project/culture/image.jpg",
+      "/images/project/culture/image (1).jpg",
+      "/images/project/culture/image (2).jpg",
+      "/images/project/culture/image (3).jpg",
+      "/images/project/culture/image (4).jpg",
+      "/images/project/culture/image (5).jpg",
+      "/images/project/culture/image (6).jpg",
+      "/images/project/culture/image (7).jpg",
+      "/images/project/culture/image (8).jpg",
+      "/images/project/culture/image (9).jpg",
+      "/images/project/culture/image (10).jpg"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/culture.svg",
+    "type": "mobile"
+  },
+  {
+    "title": "E-Commerce Security",
+    "description": "E-Commerce Security is an innovative e-commerce platform that integrates advanced security techniques to protect sensitive transaction data. By utilizing Steganography (LSB method) and RSA encryption, the system ensures that purchase details are securely embedded within product images, preventing unauthorized access and enhancing transaction confidentiality.",
+    "feature": "Secure Transaction Data Embedding – Encrypts purchase details with RSA and hides them in product images using LSB Steganography.\nData Extraction & Decryption – Allows authorized users to retrieve and decrypt hidden transaction details.\nProduct Image-Based Authentication – Verifies the authenticity of transactions through steganographic data validation.\nUser Role Management – Supports Admin (managing encryption & transaction security) and Customer (receiving secured images).\nSecure File Handling & Storage – Ensures integrity by preventing unauthorized modifications to images.\nEncrypted Data Transfer – Uses HTTPS and secure APIs to protect communication during transactions.",
+    "images": [
+      "/images/project/secure/image.png",
+      "/images/project/secure/image (1).png",
+      "/images/project/secure/image (2).png",
+      "/images/project/secure/image (3).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/secure.svg",
+    "type": "web"
+  },
+  {
+    "title": "Kumbangsari web ",
+    "description": "Kumbangsari Web is a web platform designed to showcase village potential, provide official village information, and support the local economy through an integrated e-commerce system. This platform helps villages promote their culture, products, and updates in a structured and accessible manner.",
+    "feature": "Village Profile – Displays essential village information, history, demographics, and governance structure.\nVillage Potentials – Highlights economic, tourism, agricultural, and cultural assets unique to the village.\nVillage Marketplace – Enables local businesses and farmers to sell their products online, supporting economic growth.\nVillage News & Updates – Provides the latest information, events, and announcements from the village government.",
+    "images": [
+      "/images/project/kumbangsari/image (1).png",
+      "/images/project/kumbangsari/image (2).png",
+      "/images/project/kumbangsari/image (3).png",
+      "/images/project/kumbangsari/image (4).png",
+      "/images/project/kumbangsari/image (5).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/kumbangsari.svg",
+    "type": "web"
+  },
+  {
+    "title": "Headposr W EfficientNet",
+    "description": "HeadPosr Web is a web-based application that utilizes HeadPoseR with EfficientNet as its backbone to estimate head poses in real time. By leveraging deep learning and computer vision, the system can accurately predict yaw, pitch, and roll angles from facial images or live video feeds.",
+    "feature": "Head Pose Estimation – Detects and predicts head orientation in real time using a trained deep learning model.\nEfficientNet Backbone – Utilizes EfficientNet-B0 for feature extraction, ensuring efficient and accurate predictions.\nLive Camera Detection – Supports real-time head pose analysis using webcam input..\nVisualization & Analytics – Displays detected pose angles and overlays reference axes on the face.",
+    "images": [
+      "/images/project/headposr/image.png",
+      "/images/project/headposr/image (1).png",
+      "/images/project/headposr/image (3).png",
+      "/images/project/headposr/image (4).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/headposr.svg",
+    "type": "web"
+  },
+  {
+    "title": "Sentiment analysis web",
+    "description": "This is a web-based sentiment analysis platform that evaluates user reviews of public facilities in Jember, sourced from Google Maps. The system applies Logistic Regression (LR) for sentiment classification and utilizes Latent Dirichlet Allocation (LDA) to extract key topics from negative reviews, providing deeper insights into public concerns.",
+    "feature": "Sentiment Analysis – Classifies user reviews into positive, neutral, or negative using a trained Logistic Regression model.\nTopic Modeling with LDA – Extracts key themes from negative reviews to identify common issues in local facilities.\nFacility-Based Sentiment Insights – Provides sentiment breakdowns for different locations, such as parks, hospitals, public offices, and transportation hubs.\nInteractive Analytics Dashboard – Visualizes sentiment trends, word clouds, and top negative topics for better decision-making.\nGoogle Maps Integration – Displays sentiment scores directly on a map for easy facility evaluation.",
+    "images": [
+      "/images/project/sentiment/image.png",
+      "/images/project/sentiment/image (1).png",
+      "/images/project/sentiment/image (2).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/sentiment.svg",
+    "type": "web"
+  },
+  {
+    "title": "Discord Bot Music",
+    "description": "MelodyBot is a Discord bot that allows users to stream music in voice channels, providing a seamless listening experience with various playback controls. Built using Discord.js (or discord.py) and integrated with YouTube API, the bot supports high-quality audio streaming, queue management, and interactive commands.",
+    "feature": "Music Playback – Plays songs from YouTube or other supported sources in Discord voice channels.\nQueue Management – Allows users to add, remove, and reorder tracks in the queue.\nPlayback Controls – Supports play, pause, resume, skip, stop, and loop commands.\nSearch & Auto-Play – Users can search for songs by title, and the bot automatically plays the best match.\nLyrics Integration – Retrieves song lyrics for users upon request.\nUser-Friendly Commands – Simple bot commands for easy interaction via text channels",
+    "images": [
+      "/images/project/discordbot/image.png",
+      "/images/project/discordbot/image (1).png",
+      "/images/project/discordbot/image (2).png"
+    ],
+    "thumbnail": "/images/thumbnail/discordbot.svg",
+    "projectLink": "",
+    "type": "web"
+  }
+]
