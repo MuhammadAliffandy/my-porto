@@ -30,3 +30,8 @@ body {
 .slick-slider .slick-slide {
   padding: 20px 15px;
 }
+
+.swiper-slide {
+  transform-origin: center bottom;
+  perspective: 1000px;
+}

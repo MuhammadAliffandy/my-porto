@@ -14,22 +14,48 @@ import { setProjectId } from "@/app/redux/slices/projectSlices";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import AppIconsList from "@/app/components/organisms/AppIconsList/AppIconsList";
+import ProjectView from "../../(project)/project/page";
 
 const HomeView = () => {
   const { push } = useRouter();
   const dispatch = useDispatch();
   const [openCarousel, setOpenCarousel] = useState<boolean>(false);
   const [openSide, setOpenSide] = useState<boolean>(false);
+  const [showCircle, setShowCircle] = useState<boolean>(false);
+  const [showProject, setShowProject] = useState(false);
 
   const handleProjectClick = (index: number) => {
-    push("/project");
     dispatch(setProjectId(index));
+    setShowCircle(true);
+
+    // Delay tampil ProjectView sampai animasi selesai
+    setTimeout(() => {
+      setShowProject(true);
+    }, 800); // sama seperti durasi animasi
   };
 
   return (
     <>
       <AppContainer className="hidden sm:hidden md:hidden lg:flex xl:flex w-full h-screen items-center justify-center relative overflow-hidden">
         <AppBgTemple />
+        {showCircle && (
+          <motion.div
+            initial={{
+              clipPath: "circle(0% at 50% 50%)",
+            }}
+            animate={{
+              clipPath: "circle(150% at 50% 50%)",
+            }}
+            transition={{
+              duration: 0.8,
+              ease: "easeInOut",
+            }}
+            className="absolute z-50 w-full h-screen overflow-hidden"
+          >
+            <ProjectView onclick={() => setShowCircle(false)} />
+          </motion.div>
+        )}
+
         {!openCarousel && <AppHeadtitle title="My" subtitle="Portfolio" />}
         <AppIconMedsos />
         {/*  */}
@@ -129,12 +155,12 @@ const HomeView = () => {
                   return (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }} // Mulai dengan opacity 0 dan posisi sedikit ke bawah
-                      animate={{ opacity: 1, y: 0 }} // Animasi ke opacity 1 dan posisi normal
+                      initial={{ y: 20 }}
+                      animate={{ y: 0 }}
                       transition={{
-                        duration: 0.5, // Durasi animasi
-                        delay: index * 0.2, // Delay berdasarkan indeks
-                        ease: "easeOut", // Easing animasi
+                        duration: 0.5,
+                        delay: index * 0.3,
+                        ease: "easeOut",
                       }}
                     >
                       <AppProjectCard
