@@ -42,23 +42,23 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
       {/*  */}
       <AppContainer className="w-[50%] h-full flex items-center justify-center relative">
         <AppContainer className="flex flex-col gap-[20px] px-[40px]">
-          <h1 className="font-unbounded font-bold text-[42px]">
+          <h1 className="font-unbounded font-bold text-[42px] animate__animated animate__fadeInUp ">
             {" "}
             {portfolio[projectId].title}
           </h1>
-          <p className="  text-[18px] font-poppins w-[80%]  text-left text-white text-shadow-black">
+          <p className="  text-[18px] font-poppins w-[80%]  text-left text-white text-shadow-black animate__animated animate__fadeInUp animate__delay-1s">
             {portfolio[projectId].description}
           </p>
           <AppButton
             text="Read More"
-            className="!w-[30%] rounded-full"
+            className="!w-[30%] rounded-full animate__animated animate__fadeInUp animate__delay-2s"
             onClick={() => setOpenDesc((openDesc) => !openDesc)}
           />
         </AppContainer>
       </AppContainer>
       {/*  */}
       <AppContainer className=" w-[50%] h-full flex flex-col gap-[20px] items-center justify-center  ">
-        <AppContainer className="w-full h-max  ">
+        <AppContainer className="w-full h-max animate__animated animate__fadeInUp animate__delay-2s ">
           <AppCarousel
             settings={{
               autoplay: true,

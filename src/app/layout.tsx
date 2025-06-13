@@ -9,6 +9,7 @@ import {
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "animate.css";
 import StoreProvider from "./redux/storeProvider";
 
 const geistSans = Geist({

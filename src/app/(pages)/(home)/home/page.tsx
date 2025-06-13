@@ -51,7 +51,13 @@ const HomeView = () => {
           </motion.div>
         )}
 
-        {!openCarousel && <AppHeadtitle title="My" subtitle="Portfolio" />}
+        {!openCarousel && (
+          <AppHeadtitle
+            title="My"
+            subtitle="Portfolio"
+            className="flex gap-[20px] items-stretch justify-start text-shadow-lg absolute top-20 left-10  animate__animated animate__bounceInLeft"
+          />
+        )}
         {!openCarousel && <AppIconMedsos />}
         {/*  */}
 
@@ -142,20 +148,23 @@ const HomeView = () => {
               <AppHeadtitle
                 title="My"
                 subtitle="Projects"
-                className="self-start flex gap-[20px] items-stretch justify-start text-shadow-lg !static"
+                className="self-start flex gap-[20px] items-stretch justify-start text-shadow-lg  animate__animated  animate__animated animate__fadeInLeft animate__delay-1s "
               />
               <AppContainer className="flex items-center gap-[10px]">
                 <AppChip
                   text="3D Phone UI"
                   href="https://3d-phone.netlify.app/"
+                  className="animate__animated animate__fadeInRight animate__delay-1s"
                 />
                 <AppChip
                   text="UI Animation Scroll"
                   href="https://cartoon-ui.netlify.app/"
+                  className="animate__animated animate__fadeInRight animate__delay-2s"
                 />
                 <AppChip
                   text="Hard Layout UI"
                   href="https://anime-ui-apps.netlify.app/"
+                  className="animate__animated animate__fadeInRight animate__delay-3s"
                 />
               </AppContainer>
             </AppContainer>
@@ -166,12 +175,12 @@ const HomeView = () => {
                   return (
                     <motion.div
                       key={index}
-                      initial={{ y: 20 }}
-                      animate={{ y: 0 }}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
                       transition={{
                         duration: 0.5,
                         delay: index * 0.3,
-                        ease: "easeOut",
+                        ease: "easeIn",
                       }}
                     >
                       <AppProjectCard
