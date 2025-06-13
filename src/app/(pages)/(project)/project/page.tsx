@@ -88,14 +88,11 @@ const ProjectView = () => {
       >
         <AppContainer className="flex flex-col gap-[20px]">
           <h1 className="font-unbounded text-[18px]">Feature Apps</h1>
-          <p className="text-[14px] font-poppins text-preline">
+          <ul className="text-[14px] font-poppins list-disc pl-5 ">
             {portfolio[projectId].feature.split("\n").map((line, idx) => (
-              <span key={idx}>
-                {line}
-                <br />
-              </span>
+              <li key={idx}>{line}</li>
             ))}
-          </p>
+          </ul>
         </AppContainer>
       </AppContainer>
     </AppContainer>
