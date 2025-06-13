@@ -1,9 +1,9 @@
 "use client";
-import AppBgTemple from "@/app/components/organisms/AppBgTemple/AppBgTemple";
+
 import AppContainer from "@/app/components/atoms/AppContainer/AppContainer";
 import { useState, useEffect } from "react";
 import AppButton from "@/app/components/atoms/AppButton/AppButton";
-import portfolio from "../../../../../portfolio.json";
+import portfolio from "../../../../portfolio.json";
 import AppCarousel from "@/app/components/atoms/AppCarousel/AppCarousel";
 import Image from "next/image";
 import { useSelector } from "react-redux";
@@ -68,7 +68,6 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
               speed: 500,
               slidesToShow: portfolio[projectId].type == "web" ? 1 : 4,
               slidesToScroll: portfolio[projectId].type == "web" ? 1 : 4,
-              centerMode: true,
             }}
           >
             {portfolio[projectId].images.map((image, index) => {

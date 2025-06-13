@@ -14,7 +14,7 @@ import { setProjectId } from "@/app/redux/slices/projectSlices";
 import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 import AppIconsList from "@/app/components/organisms/AppIconsList/AppIconsList";
-import ProjectView from "../../(project)/project/page";
+import ProjectView from "@/app/components/templates/projectView";
 import AppChip from "@/app/components/atoms/AppChip/AppChip";
 
 const HomeView = () => {
