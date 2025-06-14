@@ -3,6 +3,8 @@
 interface AppButton {
   text: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   className?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -11,6 +13,8 @@ interface AppButton {
 const AppButton: React.FC<AppButton> = ({
   text,
   onClick,
+  onMouseEnter = () => {},
+  onMouseLeave = () => {},
   className,
   type = "button",
   disabled = false,
@@ -19,6 +23,8 @@ const AppButton: React.FC<AppButton> = ({
     <button
       type={type}
       onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       disabled={disabled}
       className={`px-[30px] py-3 w-full text-[14px] font-extrabold cursor-pointer bg-black text-white ${className}`}
     >

@@ -6,6 +6,8 @@ interface AppContainerProps {
   id?: string;
   onMouseMove?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
   style?: React.CSSProperties;
   animation?: string;
 }
@@ -18,6 +20,8 @@ const AppContainer: React.FC<AppContainerProps> = (props) => {
       style={props.style}
       onClick={props.onClick}
       onMouseMove={props.onMouseMove}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
       className={props.className ?? `flex flex-col`}
     >
       {props.children}
