@@ -40,7 +40,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Fandy Portfolio",
+  title: "Aliffandy✌️",
   description: "That the portfolio of Fandy, a Fullstack Engineer",
 };
 
@@ -51,6 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/dragon.png" sizes="any" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${unbounded.variable} ${poppins.variable} antialiased`}
       >
