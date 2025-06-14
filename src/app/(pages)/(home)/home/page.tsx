@@ -31,7 +31,7 @@ const HomeView = () => {
 
   return (
     <>
-      <AppContainer className="hidden sm:hidden md:hidden lg:flex xl:flex w-full h-screen items-center justify-center relative overflow-hidden">
+      <AppContainer className="flex w-full h-screen items-center justify-center relative overflow-hidden">
         <AppBgTemple />
         {showCircle && (
           <motion.div
@@ -99,7 +99,12 @@ const HomeView = () => {
                   }}
                 />
 
-                <div className="bg-black/50 h-full flex flex-col gap-[20px] items-center justify-center w-[50vw] px-[20px]">
+                <AppContainer
+                  className="bg-black/50 h-full flex flex-col gap-[20px] items-center justify-start 
+                  sm:justify-start md:justify-center lg:justify-center xl:justify-center w-[80vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]  
+                  overflow-y-scroll xl:w-[50vw] 
+                  px-[20px] p-[40px] sm:py-[40px] md:py-0 lg:py-0 xl:py-0 "
+                >
                   <motion.div
                     className="w-[80%] flex flex-col gap-[10px]"
                     initial={{ x: -50, opacity: 0 }}
@@ -135,7 +140,7 @@ const HomeView = () => {
                   >
                     <AppIconsList />
                   </motion.div>
-                </div>
+                </AppContainer>
               </motion.div>
             )}
           </AnimatePresence>
@@ -143,14 +148,24 @@ const HomeView = () => {
 
         {/*  */}
         {openCarousel && (
-          <AppContainer className="bg-black/50 w-full h-full flex flex-col p-[20px] gap-[20px] items-center justify-center absolute ">
-            <AppContainer className="self-start w-full flex items-end justify-between gap-[20px] ">
+          <AppContainer
+            className="bg-black/50 w-full h-full flex flex-col 
+          p-[20px] 
+          gap-[20px] items-center 
+          justify-start  sm:justify-start  md:justify-center lg:justify-center xl:justify-center
+          overflow-y-auto overflow-x-hidden absolute "
+          >
+            <AppContainer
+              className="self-start w-full flex
+            flex-col sm:flex-col md:flex-row lg:flex-row xl:flex-row 
+            items-end justify-between gap-[20px] "
+            >
               <AppHeadtitle
                 title="My"
                 subtitle="Projects"
                 className="self-start flex gap-[20px] items-stretch justify-start text-shadow-lg  animate__animated  animate__animated animate__fadeInLeft animate__delay-1s "
               />
-              <AppContainer className="flex items-center gap-[10px]">
+              <AppContainer className="flex items-center gap-[10px] flex-wrap">
                 <AppChip
                   text="3D Phone UI"
                   href="https://3d-phone.netlify.app/"
@@ -201,11 +216,11 @@ const HomeView = () => {
           <AppButtonBounce onClick={() => setOpenCarousel(!openCarousel)} />
         )}
       </AppContainer>
-      <AppContainer className="w-full h-screen bg-black sm:flex md:flex xl:hidden lg:hidden flex items-center justify-center  ">
+      {/* <AppContainer className="w-full h-screen bg-black sm:flex md:flex xl:hidden lg:hidden flex items-center justify-center  ">
         <p className="font-poppins uppercase border-2 p-[20px] border-yellow-500">
           Only Desktop Mode
         </p>
-      </AppContainer>
+      </AppContainer> */}
     </>
   );
 };

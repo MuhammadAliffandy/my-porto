@@ -21,17 +21,8 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
   const [circleReveal, setCircleReveal] = useState<boolean>(false);
   const projectId: number = useSelector((state: any) => state.project.value);
 
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    setPosition({ x, y });
-  };
-
   return (
-    <AppContainer className="relative w-full h-screen bg-black">
+    <AppContainer className="relative w-full h-screen bg-black overflow-y-hidden overflow-x-hidden ">
       {circleReveal ? (
         <motion.div
           initial={{
@@ -45,8 +36,16 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         <AppContainer className="w-full h-full bg-[url('/images/myth.jpg')] bg-cover bg-center absolute " />
       )}
       <AppContainer
-        onMouseMove={handleMouseMove}
-        className="w-full h-screen flex items-center justify-center   bg-black/40 bg-cover bg-no-repeat absolute overflow-hidden"
+        onClick={() => {
+          if (openDesc) {
+            setOpenDesc(false);
+          }
+        }}
+        className="w-full h-screen flex
+        flex-col-reverse sm:flex-col-reverse md:flex-row lg:flex-row xl:flex-row 
+        items-center 
+        justify-start sm:justify-start md:justify-center lg:justify-center  xl:justify-center 
+      bg-black/40 bg-cover bg-no-repeat absolute overflow-hidden py-[20px] overflow-y-auto"
       >
         <Icon
           icon={"mdi:arrow-back"}
@@ -54,18 +53,23 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
           onClick={props.onclick}
         />
         {/*  */}
-        <AppContainer className="w-[50%] h-full flex items-center justify-center relative">
-          <AppContainer className="flex flex-col gap-[20px] px-[40px]">
+        <AppContainer className=" w-full sm:w-full md:w-[50%] lg:w-[50%]  xl:w-[50%]  h-full flex items-center justify-center relative ">
+          <AppContainer
+            className="flex flex-col gap-[20px] px-[40px] 
+          items-center sm:items-center md:items-start lg:items-start xl:items-start 
+          text-center sm:text-center md:text-left lg:text-left xl:text-left
+           "
+          >
             <h1 className="font-unbounded font-bold text-[42px] animate__animated animate__fadeInUp ">
               {" "}
               {portfolio[projectId].title}
             </h1>
-            <p className="  text-[18px] font-poppins w-[80%]  text-left text-white text-shadow-black animate__animated animate__fadeInUp animate__delay-1s">
+            <p className="  text-[18px] font-poppins w-[80%]  text-white text-shadow-black animate__animated animate__fadeInUp animate__delay-1s">
               {portfolio[projectId].description}
             </p>
             <AppButton
-              text="Read More"
-              className="!w-[30%] rounded-full bg-white !text-black animate__animated animate__fadeInUp animate__delay-2s"
+              text={openDesc ? "Close" : "Read More"}
+              className="!w-[30%] rounded-full bg-white !text-black min-w-fit animate__animated animate__fadeInUp animate__delay-2s"
               onClick={() => setOpenDesc((openDesc) => !openDesc)}
               onMouseEnter={() => setCircleReveal(true)}
               onMouseLeave={() => setCircleReveal(false)}
@@ -73,7 +77,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
           </AppContainer>
         </AppContainer>
         {/*  */}
-        <AppContainer className=" w-[50%] h-full flex flex-col gap-[20px] items-center justify-center  ">
+        <AppContainer className=" w-full sm:w-full md:w-[50%] lg:w-[50%]  xl:w-[50%] h-full flex flex-col gap-[20px] items-center justify-center  ">
           <AppContainer
             onMouseEnter={() => setCircleReveal(true)}
             onMouseLeave={() => setCircleReveal(false)}
@@ -108,19 +112,21 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         </AppContainer>
 
         {/*  */}
-        <AppContainer
-          className={`bg-black/80 w-[30%] h-full p-[20px] flex items-center justify-end absolute transition-all duration-500 ease-in-out  ${
+      </AppContainer>
+      <AppContainer
+        className={`bg-black/80 
+          w-[80%] sm:w-[80%] md:w-[50%] lg:w-[40%]  xl:w-[30%] 
+          h-full p-[20px] flex items-center justify-end absolute transition-all duration-500 ease-in-out  ${
             openDesc ? "right-0" : "right-[-100%]"
           }`}
-        >
-          <AppContainer className="flex flex-col gap-[20px]">
-            <h1 className="font-unbounded text-[18px]">Feature Apps</h1>
-            <ul className="text-[14px] font-poppins list-disc pl-5 ">
-              {portfolio[projectId].feature.split("\n").map((line, idx) => (
-                <li key={idx}>{line}</li>
-              ))}
-            </ul>
-          </AppContainer>
+      >
+        <AppContainer className="flex flex-col gap-[20px]">
+          <h1 className="font-unbounded text-[18px]">Feature Apps</h1>
+          <ul className="text-[14px] font-poppins list-disc pl-5 ">
+            {portfolio[projectId].feature.split("\n").map((line, idx) => (
+              <li key={idx}>{line}</li>
+            ))}
+          </ul>
         </AppContainer>
       </AppContainer>
     </AppContainer>
