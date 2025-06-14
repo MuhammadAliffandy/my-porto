@@ -1,5 +1,18 @@
 [
   {
+    "title": "Mini Notion",
+    "description": "MiniNotion is a collaborative note-taking web app inspired by Notion and Google Docs, featuring real-time editing and flexible content structuring.",
+    "feature": "User Authentication – Secure login using JWT and cookies\nRealtime Editing – Instant updates across users via WebSocket\nDrag & Drop – Reorder titles and content blocks easily\nRich Text & Media – Support for title, subtitle, paragraph, and image blocks\nFull CRUD – Create, read, update, and delete notes and blocks\nLive Collaboration – Real-time typing and changes reflected instantly",
+    "images": [
+      "/images/project/notionclone/image.png",
+      "/images/project/notionclone/image (1).png",
+      "/images/project/notionclone/image (2).png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/images/thumbnail/notionclone.svg",
+    "type": "web"
+  },
+  {
     "title": "Forwardin",
     "description": "Forwardin is a message automation website that leverages the WhatsApp platform for chat management and automation across multiple devices.",
     "feature": "User Authentication – Login with Google & JWT Authentication User\nRole Management – Admin, Customer Support, and Agent\nMass Messaging & Automation – Broadcast campaigns, auto-reply, and customer service chatbot\nContact Management – User contact storage and segmentation\nRealtime Messaging – Live communication using WebSocket Device QR\nWhatsApp API – WhatsApp API integration via QR Code\nInteractive UI – Modern design using Material UI with Single Page Application (SPA) navigation",

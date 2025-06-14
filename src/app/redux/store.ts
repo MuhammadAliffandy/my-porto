@@ -12,6 +12,8 @@ import persistedReducer from "./persistedReducer";
 
 export const Store = configureStore({
   reducer: persistedReducer,
+  preloadedState: undefined,
+  devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
