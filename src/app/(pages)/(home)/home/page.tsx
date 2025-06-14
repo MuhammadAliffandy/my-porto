@@ -100,7 +100,7 @@ const HomeView = () => {
                 />
 
                 <AppContainer
-                  className="bg-black/50 h-full flex flex-col gap-[20px] items-center justify-start 
+                  className="bg-black/80 h-full flex flex-col gap-[20px] items-center justify-start 
                   sm:justify-start md:justify-center lg:justify-center xl:justify-center w-[80vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]  
                   overflow-y-scroll xl:w-[50vw] 
                   px-[20px] p-[40px] sm:py-[40px] md:py-0 lg:py-0 xl:py-0 "

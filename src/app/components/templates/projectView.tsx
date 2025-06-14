@@ -115,7 +115,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
       </AppContainer>
       <AppContainer
         className={`bg-black/80 
-          w-[80%] sm:w-[80%] md:w-[50%] lg:w-[40%]  xl:w-[30%] 
+          w-[80%] sm:w-[90%] md:w-[50%] lg:w-[40%]  xl:w-[30%] 
           h-full p-[20px] flex items-center justify-end absolute transition-all duration-500 ease-in-out  ${
             openDesc ? "right-0" : "right-[-100%]"
           }`}
