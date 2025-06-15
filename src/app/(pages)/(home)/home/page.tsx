@@ -7,7 +7,6 @@ import AppHeadtitle from "@/app/components/molecules/AppHeadtitle/AppHeadtitle";
 import AppProjectCard from "@/app/components/organisms/AppProjectCard/AppProjectCard";
 import AppIconMedsos from "@/app/components/organisms/AppIconMedsos/AppIconMedsos";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import portfolio from "../../../../../portfolio.json";
 import { useDispatch } from "react-redux";
 import { setProjectId } from "@/app/redux/slices/projectSlices";
@@ -18,11 +17,11 @@ import ProjectView from "@/app/components/templates/projectView";
 import AppChip from "@/app/components/atoms/AppChip/AppChip";
 
 const HomeView = () => {
-  const { push } = useRouter();
   const dispatch = useDispatch();
   const [openCarousel, setOpenCarousel] = useState<boolean>(false);
   const [openSide, setOpenSide] = useState<boolean>(false);
   const [showCircle, setShowCircle] = useState<boolean>(false);
+  const [projecthover, setProjectHover] = useState<number>(-1);
 
   const handleProjectClick = (index: number) => {
     dispatch(setProjectId(index));
@@ -31,7 +30,7 @@ const HomeView = () => {
 
   return (
     <>
-      <AppContainer className="flex w-full h-screen items-center justify-center relative overflow-hidden">
+      <AppContainer className="flex w-full h-full max-h-screen items-center justify-center relative overflow-hidden">
         <AppBgTemple />
         {showCircle && (
           <motion.div
@@ -102,7 +101,7 @@ const HomeView = () => {
                 <AppContainer
                   className="bg-black/80 h-full flex flex-col gap-[20px] items-center justify-start 
                   sm:justify-start md:justify-center lg:justify-center xl:justify-center w-[80vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]  
-                  overflow-y-scroll xl:w-[50vw] 
+                  overflow-y-auto xl:w-[50vw] 
                   px-[20px] p-[40px] sm:py-[40px] md:py-0 lg:py-0 xl:py-0 "
                 >
                   <motion.div
@@ -202,7 +201,14 @@ const HomeView = () => {
                         title={data.title}
                         subtitle={data.description}
                         imageUrl={data.thumbnail}
+                        onMouseEnter={() => setProjectHover(index)}
+                        onMouseLeave={() => setProjectHover(-1)}
                         onClick={() => handleProjectClick(index)}
+                        className={
+                          index !== projecthover && projecthover != -1
+                            ? "opacity-40 "
+                            : "opacity-100 "
+                        }
                       />
                     </motion.div>
                   );
@@ -216,11 +222,6 @@ const HomeView = () => {
           <AppButtonBounce onClick={() => setOpenCarousel(!openCarousel)} />
         )}
       </AppContainer>
-      {/* <AppContainer className="w-full h-screen bg-black sm:flex md:flex xl:hidden lg:hidden flex items-center justify-center  ">
-        <p className="font-poppins uppercase border-2 p-[20px] border-yellow-500">
-          Only Desktop Mode
-        </p>
-      </AppContainer> */}
     </>
   );
 };

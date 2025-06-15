@@ -22,7 +22,12 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
   const projectId: number = useSelector((state: any) => state.project.value);
 
   return (
-    <AppContainer className="relative w-full h-screen bg-black overflow-y-hidden overflow-x-hidden ">
+    <AppContainer className="relative w-full h-full max-h-screen bg-black overflow-y-hidden overflow-x-hidden ">
+      <Icon
+        icon={"mdi:arrow-back"}
+        className="text-black bg-white rounded-full text-[30px] p-[4px] absolute z-90 top-3 left-3 cursor-pointer"
+        onClick={props.onclick}
+      />
       {circleReveal ? (
         <motion.div
           initial={{
@@ -45,13 +50,8 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         flex-col-reverse sm:flex-col-reverse md:flex-row lg:flex-row xl:flex-row 
         items-center 
         justify-start sm:justify-start md:justify-center lg:justify-center  xl:justify-center 
-      bg-black/40 bg-cover bg-no-repeat absolute overflow-hidden py-[20px] overflow-y-auto"
+      bg-black/40 bg-cover bg-no-repeat absolute overflow-hidden py-[20px] overflow-y-auto xl:overflow-y-hidden "
       >
-        <Icon
-          icon={"mdi:arrow-back"}
-          className="text-black bg-white rounded-full text-[30px] p-[4px] absolute z-30 top-3 left-3 cursor-pointer"
-          onClick={props.onclick}
-        />
         {/*  */}
         <AppContainer className=" w-full sm:w-full md:w-[50%] lg:w-[50%]  xl:w-[50%]  h-full flex items-center justify-center relative ">
           <AppContainer
@@ -120,7 +120,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
             openDesc ? "right-0" : "right-[-100%]"
           }`}
       >
-        <AppContainer className="flex flex-col gap-[20px]">
+        <AppContainer className="flex flex-col gap-[20px] ">
           <h1 className="font-unbounded text-[18px]">Feature Apps</h1>
           <ul className="text-[14px] font-poppins list-disc pl-5 ">
             {portfolio[projectId].feature.split("\n").map((line, idx) => (

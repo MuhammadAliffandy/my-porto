@@ -8,15 +8,16 @@ interface AppProjectCardProps {
   subtitle?: string;
   imageUrl?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
 const AppProjectCard: React.FC<AppProjectCardProps> = (props) => {
   return (
     <AppContainer
-      className={
-        props.className ||
-        `bg-white p-[15px] rounded-xl flex flex-col gap-[10px] text-black w-full  transition transform hover:scale-110 duration-300 ease-in-out `
-      }
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
+      className={`${props.className} bg-white  p-[15px] rounded-xl flex flex-col gap-[10px] text-black w-full  transition transform hover:scale-110 duration-300 ease-in-out `}
     >
       <AppContainer className="w-full h-[200px] relative">
         <AppContainer
@@ -34,7 +35,7 @@ const AppProjectCard: React.FC<AppProjectCardProps> = (props) => {
       <AppHeadline
         className="items-start"
         title={props.title || "Project Title"}
-        titleClassName="text-[24px] font-bold text-black line-clamp-1"
+        titleClassName="text-[24px] font-bold text-black line-clamp-1 "
         subtitle={
           props.subtitle ||
           "At eligendi voluptate qui unde. Asperiores unde et dolor reprehenderit delectus repellat asperiores. Consequatur et non vitae. Consequatur ut aspernatur veniam debitis. Quidem aut necessitatibus rerum dolor et architecto. Maxime ducimus et."
