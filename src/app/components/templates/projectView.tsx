@@ -8,15 +8,16 @@ import AppCarousel from "@/app/components/atoms/AppCarousel/AppCarousel";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
-import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import AppFeatureSide from "@/app/components/organisms/AppFeatureSide/AppFeatureSide";
+import AppProjectDescription from "../organisms/AppProjectDescription/AppProjectDescription";
+import AppImgprojectContainer from "../organisms/AppImgProjectContainer/AppImgProjectContainer";
 
 interface ProjectViewProps {
   onclick?: () => void;
 }
 
 const ProjectView: React.FC<ProjectViewProps> = (props) => {
-  const { push } = useRouter();
   const [openDesc, setOpenDesc] = useState<boolean>(false);
   const [circleReveal, setCircleReveal] = useState<boolean>(false);
   const projectId: number = useSelector((state: any) => state.project.value);
@@ -53,82 +54,24 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
       bg-black/40 bg-cover bg-no-repeat absolute overflow-hidden py-[20px] overflow-y-auto xl:overflow-y-hidden "
       >
         {/*  */}
-        <AppContainer className=" w-full sm:w-full md:w-[50%] lg:w-[50%]  xl:w-[50%]  h-full flex items-center justify-center relative ">
-          <AppContainer
-            className="flex flex-col gap-[20px] px-[40px] 
-          items-center sm:items-center md:items-start lg:items-start xl:items-start 
-          text-center sm:text-center md:text-left lg:text-left xl:text-left
-           "
-          >
-            <h1 className="font-unbounded font-bold text-[42px] animate__animated animate__fadeInUp ">
-              {" "}
-              {portfolio[projectId].title}
-            </h1>
-            <p className="  text-[18px] font-poppins w-[80%]  text-white text-shadow-black animate__animated animate__fadeInUp animate__delay-1s">
-              {portfolio[projectId].description}
-            </p>
-            <AppButton
-              text={openDesc ? "Close" : "Read More"}
-              className="!w-[30%] rounded-full bg-white !text-black min-w-fit animate__animated animate__fadeInUp animate__delay-2s"
-              onClick={() => setOpenDesc((openDesc) => !openDesc)}
-              onMouseEnter={() => setCircleReveal(true)}
-              onMouseLeave={() => setCircleReveal(false)}
-            />
-          </AppContainer>
-        </AppContainer>
+        <AppProjectDescription
+          openDesc={openDesc}
+          title={portfolio[projectId].title}
+          subtitle={portfolio[projectId].description}
+          onClick={() => setOpenDesc((openDesc) => !openDesc)}
+          onMouseEnter={() => setCircleReveal(true)}
+          onMouseLeave={() => setCircleReveal(false)}
+        />
         {/*  */}
-        <AppContainer className=" w-full sm:w-full md:w-[50%] lg:w-[50%]  xl:w-[50%] h-full flex flex-col gap-[20px] items-center justify-center  ">
-          <AppContainer
-            onMouseEnter={() => setCircleReveal(true)}
-            onMouseLeave={() => setCircleReveal(false)}
-            className="w-full h-max animate__animated animate__fadeInUp animate__delay-2s "
-          >
-            <AppCarousel
-              settings={{
-                autoplay: true,
-                autoplaySpeed: 3000,
-                arrows: false,
-                infinite: true,
-                speed: 500,
-                slidesToShow: portfolio[projectId].type == "web" ? 1 : 4,
-                slidesToScroll: portfolio[projectId].type == "web" ? 1 : 4,
-              }}
-            >
-              {portfolio[projectId].images.map((image, index) => {
-                return (
-                  <AppContainer key={index} className=" w-full h-full">
-                    <Image
-                      src={portfolio[projectId].images[index]}
-                      width={500}
-                      height={200}
-                      alt={`Project Image ${index + 1}`}
-                      className="w-full h-full object-contain"
-                    />
-                  </AppContainer>
-                );
-              })}
-            </AppCarousel>
-          </AppContainer>
-        </AppContainer>
+        <AppImgprojectContainer
+          data={portfolio[projectId]}
+          onMouseEnter={() => setCircleReveal(true)}
+          onMouseLeave={() => setCircleReveal(false)}
+        />
 
         {/*  */}
       </AppContainer>
-      <AppContainer
-        className={`bg-black/80 
-          w-[80%] sm:w-[90%] md:w-[50%] lg:w-[40%]  xl:w-[30%] 
-          h-full p-[20px] flex items-center justify-end absolute transition-all duration-500 ease-in-out  ${
-            openDesc ? "right-0" : "right-[-100%]"
-          }`}
-      >
-        <AppContainer className="flex flex-col gap-[20px] ">
-          <h1 className="font-unbounded text-[18px]">Feature Apps</h1>
-          <ul className="text-[14px] font-poppins list-disc pl-5 ">
-            {portfolio[projectId].feature.split("\n").map((line, idx) => (
-              <li key={idx}>{line}</li>
-            ))}
-          </ul>
-        </AppContainer>
-      </AppContainer>
+      <AppFeatureSide data={portfolio[projectId]} openDesc={openDesc} />
     </AppContainer>
   );
 };
