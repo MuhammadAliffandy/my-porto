@@ -26,8 +26,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.d.ts",
     ".next/types/**/*.ts",
-    "src/app/components/atoms/AppContainer"
+    "src/app/components/atoms/AppContainer",
+    "src/app/types.d.ts"
   ],
   "exclude": ["node_modules"]
 }

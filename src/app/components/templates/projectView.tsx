@@ -12,6 +12,7 @@ import AppProjectDescription from "../organisms/AppProjectDescription/AppProject
 import AppImgprojectContainer from "../organisms/AppImgProjectContainer/AppImgProjectContainer";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
+import AppIconChip from "../molecules/AppIconChip/AppIconChip";
 
 interface ProjectViewProps {
   onclick?: () => void;
@@ -90,15 +91,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         <Marquee>
           {iconData.map((data: any) => {
             return (
-              <AppContainer
-                key={data.id}
-                className="flex items-center gap-[10px] min-w-fit mx-4"
-              >
-                <Image src={data.src} width={25} height={25} alt="icon" />
-                <p className="text-white font-unbounded min-w-fit text-[18px]">
-                  {data.name}
-                </p>
-              </AppContainer>
+              <AppIconChip key={data.id} text={data.name} src={data.src} />
             );
           })}
         </Marquee>

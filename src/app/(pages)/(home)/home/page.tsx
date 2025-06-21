@@ -17,6 +17,7 @@ import ProjectView from "@/app/components/templates/projectView";
 
 import AppProjectHeadLine from "@/app/components/organisms/AppProjectHeadLine/AppProjectHeadLine";
 import AppIntroductionSide from "@/app/components/organisms/AppIntroductionSide/AppIntroductionSide";
+import AppLanyard from "@/app/components/organisms/AppLanyard/AppLanyard";
 
 const HomeView = () => {
   const dispatch = useDispatch();
@@ -52,12 +53,14 @@ const HomeView = () => {
           </motion.div>
         )}
 
-        {!openCarousel && (
+        {!openCarousel && !openSide ? (
           <AppHeadtitle
             title="My"
             subtitle="Portfolio"
             className="flex gap-[20px] items-stretch justify-start text-shadow-lg absolute top-20 left-10  animate__animated animate__bounceInLeft"
           />
+        ) : (
+          <></>
         )}
         {!openCarousel && <AppIconMedsos />}
         {/*  */}
@@ -79,36 +82,41 @@ const HomeView = () => {
         >
           <AnimatePresence>
             {openSide && (
-              <motion.div
-                initial={{ x: 300, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 300, opacity: 0 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 25,
-                  duration: 0.5,
-                }}
-                className="absolute right-0 top-0 z-20 h-full flex items-center"
-              >
-                <Icon
-                  icon="mdi:chevron-left"
-                  className={`text-[50px] p-[10px] bg-white rounded-l-2xl text-black cursor-pointer z-30 `}
-                  onClick={() => {
-                    setOpenSide(false);
-                    setOpenCarousel(false);
+              <>
+                <AppContainer className="w-full h-full">
+                  <AppLanyard />
+                </AppContainer>
+                <motion.div
+                  initial={{ x: 300, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: 300, opacity: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 25,
+                    duration: 0.5,
                   }}
-                />
+                  className="absolute right-0 top-0 z-20 h-full flex items-center"
+                >
+                  <Icon
+                    icon="mdi:chevron-left"
+                    className={`text-[50px] p-[10px] bg-white rounded-l-2xl text-black cursor-pointer z-30 `}
+                    onClick={() => {
+                      setOpenSide(false);
+                      setOpenCarousel(false);
+                    }}
+                  />
 
-                <AppContainer
-                  className="bg-black/80 h-full flex flex-col gap-[20px] items-center justify-start 
+                  <AppContainer
+                    className="bg-black/80 h-full flex flex-col gap-[20px] items-center justify-start 
                   sm:justify-start md:justify-center lg:justify-center xl:justify-center w-[80vw] sm:w-[80vw] md:w-[70vw] lg:w-[60vw]  
                   overflow-y-auto xl:w-[50vw] 
                   px-[20px] p-[40px] sm:py-[40px] md:py-0 lg:py-0 xl:py-0 "
-                >
-                  <AppIntroductionSide />
-                </AppContainer>
-              </motion.div>
+                  >
+                    <AppIntroductionSide />
+                  </AppContainer>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </AppContainer>
