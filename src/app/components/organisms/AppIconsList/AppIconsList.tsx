@@ -33,6 +33,7 @@ const AppIconsList = () => {
           width={45}
           height={45}
           alt="icon"
+          className="bg-white p-[5px] rounded-lg shadow-md"
         />
         <Image
           src="/icons/15.svg"

@@ -35,3 +35,11 @@ body {
   transform-origin: center bottom;
   perspective: 1000px;
 }
+
+.slick-dots .slick-active button:before {
+  color: white !important;
+}
+.slick-dots li button:before {
+  opacity: 0.55;
+  color: white !important;
+}

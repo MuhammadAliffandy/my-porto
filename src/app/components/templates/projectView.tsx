@@ -2,16 +2,16 @@
 
 import AppContainer from "@/app/components/atoms/AppContainer/AppContainer";
 import { useState, useEffect } from "react";
-import AppButton from "@/app/components/atoms/AppButton/AppButton";
 import portfolio from "../../../../portfolio.json";
-import AppCarousel from "@/app/components/atoms/AppCarousel/AppCarousel";
-import Image from "next/image";
+import iconPortofolio from "../../../../icons.json";
 import { useSelector } from "react-redux";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import AppFeatureSide from "@/app/components/organisms/AppFeatureSide/AppFeatureSide";
 import AppProjectDescription from "../organisms/AppProjectDescription/AppProjectDescription";
 import AppImgprojectContainer from "../organisms/AppImgProjectContainer/AppImgProjectContainer";
+import Image from "next/image";
+import Marquee from "react-fast-marquee";
 
 interface ProjectViewProps {
   onclick?: () => void;
@@ -21,6 +21,19 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
   const [openDesc, setOpenDesc] = useState<boolean>(false);
   const [circleReveal, setCircleReveal] = useState<boolean>(false);
   const projectId: number = useSelector((state: any) => state.project.value);
+  const [iconData, setIconData] = useState<object[]>([]);
+
+  const handleGetIcons = () => {
+    const icons: any[] = iconPortofolio.filter(
+      (data) => portfolio[projectId].icons.indexOf(data.id) !== -1
+    );
+
+    setIconData(icons);
+  };
+
+  useEffect(() => {
+    handleGetIcons();
+  }, [projectId]);
 
   return (
     <AppContainer className="relative w-full h-full max-h-screen bg-black overflow-y-hidden overflow-x-hidden ">
@@ -29,6 +42,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         className="text-black bg-white rounded-full text-[30px] p-[4px] absolute z-90 top-3 left-3 cursor-pointer"
         onClick={props.onclick}
       />
+
       {circleReveal ? (
         <motion.div
           initial={{
@@ -72,6 +86,23 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
         {/*  */}
       </AppContainer>
       <AppFeatureSide data={portfolio[projectId]} openDesc={openDesc} />
+      <AppContainer className="flex items-center gap-[40px] w-full max-h-[60px] h-[100px] bg-black absolute bottom-0 ">
+        <Marquee>
+          {iconData.map((data: any) => {
+            return (
+              <AppContainer
+                key={data.id}
+                className="flex items-center gap-[10px] min-w-fit mx-4"
+              >
+                <Image src={data.src} width={25} height={25} alt="icon" />
+                <p className="text-white font-unbounded min-w-fit text-[18px]">
+                  {data.name}
+                </p>
+              </AppContainer>
+            );
+          })}
+        </Marquee>
+      </AppContainer>
     </AppContainer>
   );
 };

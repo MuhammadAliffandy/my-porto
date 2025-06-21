@@ -1,0 +1,127 @@
+[
+  { "id": 1, "name": "HTML", "src": "/icons/4.svg", "type": "language" },
+  { "id": 2, "name": "CSS", "src": "/icons/8.svg", "type": "language" },
+  { "id": 3, "name": "JavaScript", "src": "/icons/11.svg", "type": "language" },
+  {
+    "id": 4,
+    "name": "TypeScript",
+    "src": "/icons/typeScript.svg",
+    "type": "language"
+  },
+  { "id": 5, "name": "Python", "src": "/icons/26.svg", "type": "language" },
+  {
+    "id": 6,
+    "name": "Dart",
+    "src": "/icons/dart-original.svg",
+    "type": "language"
+  },
+  { "id": 7, "name": "React", "src": "/icons/35.svg", "type": "framework" },
+  { "id": 8, "name": "Vue", "src": "/icons/18.svg", "type": "framework" },
+  {
+    "id": 9,
+    "name": "Flutter",
+    "src": "/icons/flutter-original.svg",
+    "type": "framework"
+  },
+  {
+    "id": 10,
+    "name": "Next.js",
+    "src": "/icons/nextjs-original.svg",
+    "type": "framework"
+  },
+  { "id": 11, "name": "Node.js", "src": "/icons/15.svg", "type": "framework" },
+  { "id": 12, "name": "MySql", "src": "/icons/29.svg", "type": "software" },
+  { "id": 13, "name": "Boostrap", "src": "/icons/39.svg", "type": "framework" },
+  {
+    "id": 14,
+    "name": "Express.js",
+    "src": "/icons/express-original-wordmark.svg",
+    "type": "framework"
+  },
+  { "id": 15, "name": "Sass", "src": "/icons/sass.svg", "type": "framework" },
+  {
+    "id": 16,
+    "name": "Material-UI",
+    "src": "/icons/materialui-original.svg",
+    "type": "framework"
+  },
+  {
+    "id": 17,
+    "name": "Tailwind CSS",
+    "src": "/icons/tailwindcss-plain.svg",
+    "type": "framework"
+  },
+  {
+    "id": 18,
+    "name": "Django",
+    "src": "/icons/django-plain-wordmark.svg",
+    "type": "framework"
+  },
+  {
+    "id": 19,
+    "name": "Flask",
+    "src": "/icons/flask-original.svg",
+    "type": "framework"
+  },
+  {
+    "id": 20,
+    "name": "Firebase",
+    "src": "/icons/firebase-plain-wordmark.svg",
+    "type": "software"
+  },
+  {
+    "id": 21,
+    "name": "Jest",
+    "src": "/icons/jest-plain.svg",
+    "type": "framework"
+  },
+  {
+    "id": 22,
+    "name": "Jupyter Notebook",
+    "src": "/icons/jupyter-original-wordmark.svg",
+    "type": "software"
+  },
+  {
+    "id": 23,
+    "name": "PostgreSQL",
+    "src": "/icons/postgresql-plain.svg",
+    "type": "software"
+  },
+  {
+    "id": 24,
+    "name": "Visual Studio Code",
+    "src": "/icons/vscode-original.svg",
+    "type": "software"
+  },
+  {
+    "id": 25,
+    "name": "Android Studio",
+    "src": "/icons/androidstudio-original.svg",
+    "type": "software"
+  },
+  {
+    "id": 26,
+    "name": "Figma",
+    "src": "/icons/Group-1.svg",
+    "type": "software"
+  },
+  {
+    "id": 27,
+    "name": "Ubuntu",
+    "src": "/icons/Group-2.svg",
+    "type": "software"
+  },
+  {
+    "id": 28,
+    "name": "Windows",
+    "src": "/icons/windows.svg",
+    "type": "software"
+  },
+  {
+    "id": 29,
+    "name": "Docker",
+    "src": "/icons/docker-plain.svg",
+    "type": "software"
+  },
+  { "id": 30, "name": "Git", "src": "/icons/32.svg", "type": "software" }
+]

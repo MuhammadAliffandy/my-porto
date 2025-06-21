@@ -10,7 +10,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/notionclone.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 4, 10, 11, 14, 16, 17, 21, 23, 24, 28, 30]
   },
   {
     "title": "Forwardin",
@@ -26,7 +27,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/forwardin.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
   },
   {
     "title": "Planify",
@@ -39,7 +41,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/planify.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
   },
   {
     "title": "Satujuta App",
@@ -55,7 +58,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/satujuta.svg",
-    "type": "mobile"
+    "type": "mobile",
+    "icons": [6, 9, 16, 24, 25, 26, 28, 30]
   },
   {
     "title": "Laundry Net",
@@ -76,7 +80,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/laundry.svg",
-    "type": "mobile"
+    "type": "mobile",
+    "icons": [6, 9, 16, 24, 25, 26, 28, 30]
   },
 
   {
@@ -93,7 +98,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/speakup.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 10, 11, 16, 17, 23, 24, 28, 30]
   },
   {
     "title": "Culture Trip",
@@ -114,7 +120,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/culture.svg",
-    "type": "mobile"
+    "type": "mobile",
+    "icons": [6, 9, 16, 20, 24, 25, 26, 28, 30]
   },
   {
     "title": "E-Commerce Security",
@@ -128,7 +135,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/secure.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 11, 24, 28, 30]
   },
   {
     "title": "Kumbangsari web ",
@@ -143,7 +151,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/kumbangsari.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
   },
   {
     "title": "Headposr W EfficientNet",
@@ -157,7 +166,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/headposr.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 5, 19, 24, 28, 30]
   },
   {
     "title": "Sentiment analysis web",
@@ -170,7 +180,8 @@
     ],
     "projectLink": "",
     "thumbnail": "/images/thumbnail/sentiment.svg",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 5, 19, 24, 28, 30]
   },
   {
     "title": "Discord Bot Music",
@@ -183,6 +194,7 @@
     ],
     "thumbnail": "/images/thumbnail/discordbot.svg",
     "projectLink": "",
-    "type": "web"
+    "type": "web",
+    "icons": [1, 2, 3, 11, 24, 28, 30]
   }
 ]
