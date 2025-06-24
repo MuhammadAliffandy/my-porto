@@ -15,6 +15,14 @@ declare module "three.meshline" {
 }
 
 declare global {
+  interface Window {
+    botpressWebChat?: {
+      init: (config: { botId: string; hostUrl: string }) => void;
+    };
+  }
+}
+
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       meshLineGeometry: any;

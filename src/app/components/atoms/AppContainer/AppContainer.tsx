@@ -8,6 +8,7 @@ interface AppContainerProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  onBlur?: () => void;
   style?: React.CSSProperties;
   animation?: string;
 }
@@ -22,6 +23,7 @@ const AppContainer: React.FC<AppContainerProps> = (props) => {
       onMouseMove={props.onMouseMove}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
+      onBlur={props.onBlur}
       className={props.className ?? `flex flex-col`}
     >
       {props.children}

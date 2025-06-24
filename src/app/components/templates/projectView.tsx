@@ -30,6 +30,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
     );
 
     setIconData(icons);
+    console.log(icons);
   };
 
   useEffect(() => {
@@ -88,7 +89,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
       </AppContainer>
       <AppFeatureSide data={portfolio[projectId]} openDesc={openDesc} />
       <AppContainer className="flex items-center gap-[40px] w-full max-h-[60px] h-[100px] bg-black absolute bottom-0 ">
-        <Marquee>
+        <Marquee autoFill>
           {iconData.map((data: any) => {
             return (
               <AppIconChip key={data.id} text={data.name} src={data.src} />

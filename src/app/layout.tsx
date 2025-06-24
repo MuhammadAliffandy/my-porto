@@ -11,6 +11,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "animate.css";
 import StoreProvider from "./redux/storeProvider";
+import AppBubbleChat from "./components/atoms/AppBubbleChat/AppBubbleChat";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,6 +59,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${unbounded.variable} ${poppins.variable} antialiased`}
       >
         <StoreProvider>{children}</StoreProvider>
+        <AppBubbleChat />
       </body>
     </html>
   );

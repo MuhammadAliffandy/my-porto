@@ -6,7 +6,7 @@ import AppButtonBounce from "@/app/components/molecules/AppButtonBounce/AppButto
 import AppHeadtitle from "@/app/components/molecules/AppHeadtitle/AppHeadtitle";
 import AppProjectCard from "@/app/components/organisms/AppProjectCard/AppProjectCard";
 import AppIconMedsos from "@/app/components/organisms/AppIconMedsos/AppIconMedsos";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import portfolio from "../../../../../portfolio.json";
 import { useDispatch } from "react-redux";
 import { setProjectId } from "@/app/redux/slices/projectSlices";
@@ -14,7 +14,6 @@ import { Icon } from "@iconify/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import ProjectView from "@/app/components/templates/projectView";
-
 import AppProjectHeadLine from "@/app/components/organisms/AppProjectHeadLine/AppProjectHeadLine";
 import AppIntroductionSide from "@/app/components/organisms/AppIntroductionSide/AppIntroductionSide";
 import AppLanyard from "@/app/components/organisms/AppLanyard/AppLanyard";
@@ -125,14 +124,20 @@ const HomeView = () => {
         {openCarousel && (
           <AppContainer
             className="bg-black/50 w-full h-full flex flex-col 
-          p-[20px] 
-          gap-[20px] items-center 
-          justify-start  sm:justify-start  md:justify-center lg:justify-center xl:justify-center
-          overflow-y-auto overflow-x-hidden absolute "
+                        p-[20px] 
+                        gap-[20px] items-center 
+                        justify-start  sm:justify-start  md:justify-center lg:justify-center xl:justify-center
+                        overflow-y-auto overflow-x-hidden absolute "
           >
+            <Icon
+              icon={"mdi:arrow-back"}
+              className="text-black bg-white rounded-full text-[30px] p-[4px] absolute z-90 top-3 left-3 cursor-pointer"
+              onClick={() => setOpenCarousel(false)}
+            />
+
             <AppProjectHeadLine />
 
-            <AppContainer className="w-full">
+            <AppContainer className="w-full ">
               <AppCarousel>
                 {portfolio.map((data, index) => {
                   return (
