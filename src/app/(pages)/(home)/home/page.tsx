@@ -168,6 +168,8 @@ export default function HomeView() {
     prevScrollY.current = currentScrollY;
   };
 
+  const scrollAnimationRef = useRef<any>(null);
+
   // Horizontal scroll tracking for Portfolio carousel
   const carouselRef = useRef<HTMLDivElement>(null);
   
@@ -227,25 +229,31 @@ export default function HomeView() {
               'contact': 'contact'
             };
             const id = idMap[label.toLowerCase()];
-            const anchor = document.getElementById(id);
+            const anchor = document.getElementById(`anchor-${id}`);
             if (anchor) {
-              const html = document.documentElement;
               const main = document.querySelector('main');
               if (main) {
-                  main.style.scrollSnapType = 'none';
-                  main.style.scrollBehavior = 'auto';
-                  
-                  const targetY = anchor.offsetTop;
-                  
-                  animate(main.scrollTop, targetY, {
-                    duration: 0.8,
-                    ease: [0.32, 0.72, 0, 1], // easeOut
-                    onUpdate: (latest) => main.scrollTo(0, latest),
-                    onComplete: () => {
-                      main.style.scrollSnapType = 'y mandatory';
-                      main.style.scrollBehavior = 'smooth';
-                    }
-                  });
+                // Stop any running scroll animation
+                if (scrollAnimationRef.current) {
+                  scrollAnimationRef.current.stop();
+                }
+
+                // Disable scroll snapping during animation to prevent browser interference
+                main.style.scrollSnapType = 'none';
+
+                const targetY = anchor.offsetTop;
+
+                scrollAnimationRef.current = animate(main.scrollTop, targetY, {
+                  duration: 0.8,
+                  ease: [0.32, 0.72, 0, 1], // easeOut
+                  onUpdate: (latest) => {
+                    main.scrollTop = latest;
+                  },
+                  onComplete: () => {
+                    // Restore snapping once animation finishes exactly on target
+                    main.style.scrollSnapType = 'y mandatory';
+                  }
+                });
               }
             }
           }}
@@ -254,6 +262,7 @@ export default function HomeView() {
 
       
         {/* ── HERO ──────────────────────────────────── */}
+        <div id="anchor-home" className="w-full h-0 m-0 p-0" />
         <StickySection containerRef={mainRef} className="z-10" id="home" bgImage="/medieval_castle_bg_1790595169316.jpg">
         <div className="min-h-screen w-full flex items-center px-8 md:px-20 lg:px-32 z-10 relative overflow-hidden">
           <div className="w-full max-w-[1600px] mx-auto relative flex items-center min-h-screen z-10">
@@ -295,6 +304,7 @@ export default function HomeView() {
         </StickySection>
 
         {/* ── ABOUT ME ──────────────────────────────── */}
+        <div id="anchor-about" className="w-full h-0 m-0 p-0" />
         <StickySection containerRef={mainRef} className="z-20" id="about" bgImage="/medieval_study_bg_1790596537699.jpg">
         <div className="min-h-screen w-full flex items-center py-24 px-8 md:px-20 lg:px-32 z-20 bg-[#1A1613] border-t-4 border-double border-[#2A221C] medieval-bevel">
           <div className="w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-0">
@@ -313,7 +323,7 @@ export default function HomeView() {
                     <div key={i} className="w-full h-full bg-white p-3 md:p-4 shadow-[0_0_40px_rgba(200,169,81,0.6)]" style={{ transform: "translateZ(0)", willChange: "transform" }}>
                       <img 
                         src={src} 
-                        alt={`aliffandy-${i + 1}`} 
+                        alt={`Muhammad Aliffandy - Fullstack Engineer Portrait ${i + 1}`} 
                         className="w-full h-full object-cover"
                         style={{ transform: "translateZ(0)", willChange: "transform" }}
                       />
@@ -344,6 +354,7 @@ export default function HomeView() {
         </StickySection>
 
         {/* ── WORK ──────────────────────────────────── */}
+        <div id="anchor-work" className="w-full h-0 m-0 p-0" />
         <StickySection containerRef={mainRef} className="z-30" id="work" bgImage="/medieval_vault_bg_1790596550911.jpg">
         <div className="h-screen w-full bg-[#110E0B] pt-24 pb-8 px-8 md:px-20 lg:px-32 z-30 border-t-4 border-double border-[#2A221C] medieval-bevel">
           <div className="max-w-[1400px] mx-auto w-full h-full flex flex-col relative z-10">
@@ -421,6 +432,7 @@ export default function HomeView() {
         </StickySection>
 
         {/* ── EXPERIENCE ────────────────────────────── */}
+        <div id="anchor-experience" className="w-full h-0 m-0 p-0" />
         <StickySection containerRef={mainRef} className="z-40" id="experience" bgImage="/medieval_council_bg_1790596566385.jpg">
         <div className="min-h-screen w-full bg-[#0F0C0A] py-24 px-8 md:px-20 lg:px-32 z-40 border-t-4 border-double border-[#2A221C] medieval-bevel flex items-center">
           <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
@@ -463,6 +475,7 @@ export default function HomeView() {
         </StickySection>
 
         {/* ── CONTACT & FOOTER ─────────────────────────────────── */}
+        <div id="anchor-contact" className="w-full h-0 m-0 p-0" />
         <StickySection className="z-50" id="contact" bgImage="/medieval_tavern_bg_1790596579381.jpg">
         <div className="w-full bg-[#14110E] z-50 border-t-4 border-double border-[#2A221C] flex flex-col medieval-bevel">
           <div className="min-h-screen w-full flex items-center justify-center relative px-8 md:px-20 lg:px-32 z-10">

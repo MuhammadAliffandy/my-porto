@@ -28,8 +28,47 @@ const medieval = Pirata_One({
 });
 
 export const metadata: Metadata = {
-  title: "Aliffandy",
-  description: "That the portfolio of Fandy, a Fullstack Engineer",
+  title: {
+    default: "Muhammad Aliffandy | Fullstack Engineer",
+    template: "%s | Muhammad Aliffandy"
+  },
+  description: "Portfolio of Muhammad Aliffandy, a Fullstack Engineer and Frontend Developer specializing in crafting high-performance web applications, robust mobile experiences, and scalable systems.",
+  keywords: ["Muhammad Aliffandy", "Aliffandy", "Fullstack Engineer", "Frontend Developer", "Portfolio", "Web Development", "Mobile Development", "React", "Next.js", "Software Engineer", "UI/UX", "Tech", "Indonesia"],
+  authors: [{ name: "Muhammad Aliffandy" }],
+  creator: "Muhammad Aliffandy",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://aliffandy.com", // Assuming a canonical domain
+    siteName: "Muhammad Aliffandy Portfolio",
+    title: "Muhammad Aliffandy | Fullstack Engineer",
+    description: "Portfolio of Muhammad Aliffandy, a Fullstack Engineer and Frontend Developer specializing in high-performance web and mobile applications.",
+    images: [
+      {
+        url: "/aliffandy-transparent.png",
+        width: 1200,
+        height: 630,
+        alt: "Muhammad Aliffandy - Fullstack Engineer",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Muhammad Aliffandy | Fullstack Engineer",
+    description: "Portfolio of Muhammad Aliffandy, a Fullstack Engineer and Frontend Developer.",
+    images: ["/aliffandy-transparent.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

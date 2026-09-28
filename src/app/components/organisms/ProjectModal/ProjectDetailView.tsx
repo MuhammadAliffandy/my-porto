@@ -84,7 +84,7 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
         <div className="w-full flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
           {project.images.map((img, i) => (
             <div key={i} className="flex-shrink-0 w-[80%] md:w-[60%] aspect-video rounded-xl border border-[#222] overflow-hidden bg-black/50">
-              <img src={img} alt="" className="w-full h-full object-contain" />
+              <img src={img} alt={`${project.title} screenshot ${i + 1} - Muhammad Aliffandy Portfolio`} className="w-full h-full object-contain" />
             </div>
           ))}
         </div>
