@@ -31,7 +31,7 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
       animate={{ opacity: 1, y: 0 }} 
       exit={{ opacity: 0, y: 30 }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col lg:flex-row w-full h-[85vh] gap-8 lg:gap-12"
+      className="flex flex-col lg:flex-row w-full h-full gap-8 lg:gap-12"
     >
       {/* Left: Circle-like Scroll List */}
       <div className="w-full lg:w-1/3 flex flex-col h-[60vh] lg:h-full relative overflow-visible">
@@ -41,8 +41,8 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
           textColor="#444"
           activeColor="#d4af37" // accent color
           side="right"
-          fontSize={2.5} // slightly smaller to fit project titles
-          spacing={1.4}
+          fontSize={2.2} // Professional size
+          spacing={2.2} // Increased spacing to accommodate up to 2 lines of wrapped text
           curve={1}
           tilt={6}
           blur={2}
@@ -56,7 +56,7 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
       </div>
 
       {/* Right: Project Details Panel */}
-      <div className="w-full lg:w-2/3 h-full overflow-y-auto custom-scrollbar bg-[#0A0A0A] rounded-[2rem] border border-[#222] p-8 md:p-12 relative flex flex-col gap-8 shadow-2xl">
+      <div className="w-full lg:w-2/3 h-full overflow-hidden bg-[#0A0A0A] rounded-[2rem] border border-[#222] p-8 md:p-12 relative flex flex-col shadow-2xl">
         <button 
           onClick={onClose}
           className="absolute top-6 right-6 z-50 w-10 h-10 bg-[#111] hover:bg-[#222] rounded-full flex items-center justify-center text-foreground transition-colors border border-[#333]"
@@ -64,20 +64,23 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
           <Icon icon="mdi:close" className="text-xl" />
         </button>
 
-        {/* Header */}
-        <div>
+        {/* Header Title (Fixed) */}
+        <div className="flex-shrink-0 mb-6 pr-12">
           <div className="font-mono text-[10px] tracking-widest text-accent uppercase mb-4">
-            {project.type} APPLICATION
+            {project.type} PROJECT
           </div>
-          <h2 className="font-playfair text-4xl md:text-5xl font-semibold mb-6 text-foreground leading-tight">
+          <h2 className="font-medieval text-4xl md:text-5xl font-semibold text-foreground leading-tight">
             {project.title}
           </h2>
-          <p className="text-lg text-muted font-light leading-relaxed max-w-2xl">
-            {project.description}
-          </p>
         </div>
 
-        {/* Gallery */}
+        {/* Scrollable Content Area */}
+        <div className="flex-grow overflow-y-auto custom-scrollbar overscroll-contain pr-4 flex flex-col gap-8">
+          <p className="text-lg text-muted font-lora leading-relaxed max-w-2xl">
+            {project.description}
+          </p>
+
+          {/* Gallery */}
         <div className="w-full flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
           {project.images.map((img, i) => (
             <div key={i} className="flex-shrink-0 w-[80%] md:w-[60%] aspect-video rounded-xl border border-[#222] overflow-hidden bg-black/50">
@@ -103,18 +106,19 @@ export default function ProjectDetailView({ project, allProjects, onSelectProjec
           </ul>
         </div>
 
-        {project.projectLink && (
-          <div className="mt-auto pt-8">
-            <a 
-              href={project.projectLink}
-              target="_blank"
-              rel="noreferrer" 
-              className="inline-flex items-center gap-2 px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium hover:scale-105 transition-transform"
-            >
-              Visit Live Project <Icon icon="mdi:open-in-new" />
-            </a>
-          </div>
-        )}
+          {project.projectLink && (
+            <div className="mt-auto pt-8 border-t border-[#222]">
+              <a 
+                href={project.projectLink}
+                target="_blank"
+                rel="noreferrer" 
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#14110E] border-double border-4 border-[#2A241E] text-accent rounded-sm font-medium hover:border-accent transition-all duration-300"
+              >
+                Visit Live Project <Icon icon="mdi:open-in-new" />
+              </a>
+            </div>
+          )}
+        </div>
       </div>
     </motion.div>
   );

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import {
-  Geist,
-  Geist_Mono,
-  Playfair_Display,
-  Unbounded,
-  Poppins,
+  Cinzel,
+  Lora,
+  Pirata_One,
 } from "next/font/google";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
@@ -13,31 +11,20 @@ import "animate.css";
 import StoreProvider from "./redux/storeProvider";
 import AppBubbleChat from "./components/atoms/AppBubbleChat/AppBubbleChat";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
 });
 
-const unbounded = Unbounded({
-  variable: "--font-unbounded",
+const medieval = Pirata_One({
+  variable: "--font-medieval",
   subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair-display",
-  subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -56,7 +43,8 @@ export default function RootLayout({
         <link rel="icon" href="/dragon.png" sizes="any" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${unbounded.variable} ${poppins.variable} antialiased`}
+        className={`${cinzel.variable} ${lora.variable} ${medieval.variable} antialiased`}
+        suppressHydrationWarning
       >
         <StoreProvider>{children}</StoreProvider>
         <AppBubbleChat />

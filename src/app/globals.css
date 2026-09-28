@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #EFEFEF;
-  --muted: #888888;
-  --accent: #d4af37;
+  --background: #14110E;
+  --foreground: #E6D8C3;
+  --muted: #8C7C6D;
+  --accent: #C8A951;
 }
 
 @theme inline {
@@ -12,16 +12,37 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-playfair: var(--font-playfair-display);
-  --font-unbounded: var(--font-unbounded);
-  --font-poppins: var(--font-poppins);
+  --font-sans: var(--font-lora);
+  --font-cinzel: var(--font-cinzel);
+  --font-medieval: var(--font-medieval);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+.medieval-bevel {
+  box-shadow: inset 0px 10px 30px rgba(0,0,0,0.9), inset 0px -10px 30px rgba(0,0,0,0.9), inset 0px 0px 0px 2px rgba(200,169,81,0.15);
+}
+
+.medieval-divider {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent, var(--accent), transparent);
+  position: relative;
+  opacity: 0.5;
+}
+.medieval-divider::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--accent);
+  font-size: 24px;
+  background: var(--background);
+  padding: 0 15px;
 }
 
 .slick-slider .slick-slide {
@@ -56,9 +77,17 @@ body {
 .bpFab {
   left: 20px !important;
   right: auto !important;
-  background: #0a0a0a !important;
-  width: 50px !important;
-  height: 50px !important;
+  background: #14110E !important;
+  border: 4px double #2A241E !important;
+  border-radius: 4px !important;
+  width: 56px !important;
+  height: 56px !important;
+  transition: all 0.3s ease !important;
+}
+
+.bpFab:hover {
+  border-color: #C8A951 !important;
+  box-shadow: 0 0 15px rgba(200, 169, 81, 0.2) !important;
 }
 
 .bpWebchat {

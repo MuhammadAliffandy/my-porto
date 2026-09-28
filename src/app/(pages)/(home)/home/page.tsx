@@ -10,6 +10,7 @@ import Stack from "@/app/components/atoms/Stack/Stack";
 import LineSidebar from "@/app/components/organisms/LineSidebar/LineSidebar";
 import portfolioData from "../../../../../portfolio.json";
 import { useRef, useState, useEffect, ReactNode } from "react";
+import BookLayout from "@/app/components/organisms/BookLayout/BookLayout";
 
 const experienceItems = [
   {
@@ -61,13 +62,16 @@ const experienceItems = [
     description: "Delivered custom digital products and UI/UX designs for clients on a marketplace platform. Maintained a 100% project completion rate and achieved an average client rating of 4.7/5 through continuous iteration and clear communication.",
   },
 ];
+
 interface StickySectionProps {
   id?: string;
   className?: string;
   children: ReactNode;
+  bgImage?: string;
+  containerRef?: React.RefObject<HTMLElement>;
 }
 
-const StickySection = ({ id, className, children }: StickySectionProps) => {
+const StickySection = ({ id, className, children, bgImage, containerRef }: StickySectionProps) => {
   const [topOffset, setTopOffset] = useState(0);
   const ref = useRef<HTMLElement>(null);
 
@@ -100,6 +104,7 @@ const StickySection = ({ id, className, children }: StickySectionProps) => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
+    container: containerRef,
     offset: ["end end", "end start"]
   });
 
@@ -121,41 +126,65 @@ const StickySection = ({ id, className, children }: StickySectionProps) => {
       className={`sticky snap-start origin-top w-full ${className}`} 
       style={{ top: topOffset, scale, opacity, filter }}
     >
+      {bgImage && (
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          <img src={bgImage} alt={`${id} background`} className="w-full h-full object-cover opacity-15 mix-blend-luminosity filter contrast-125 sepia-[0.3]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#14110E]/60 to-[#14110E] z-10"></div>
+          
+          <div className="absolute inset-4 md:inset-8 border-[1px] border-accent/15 z-20">
+            <Icon icon="game-icons:diamond-hilt" className="absolute -top-[15px] -left-[15px] text-accent/40 text-3xl" />
+            <Icon icon="game-icons:diamond-hilt" className="absolute -top-[15px] -right-[15px] text-accent/40 text-3xl rotate-90" />
+            <Icon icon="game-icons:diamond-hilt" className="absolute -bottom-[15px] -right-[15px] text-accent/40 text-3xl rotate-180" />
+            <Icon icon="game-icons:diamond-hilt" className="absolute -bottom-[15px] -left-[15px] text-accent/40 text-3xl -rotate-90" />
+          </div>
+        </div>
+      )}
       {children}
     </motion.section>
   );
 };
 
+
 export default function HomeView() {
+  const mainRef = useRef<HTMLElement>(null);
+  const prevScrollY = useRef(0);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const [activeProject, setActiveProject] = useState<ProjectData | null>(null);
 
   // Global scroll listener for Navbar
-  const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
-    const previous = scrollY.getPrevious() || 0;
-    if (latest > previous && latest > 150) {
+  const { scrollYProgress } = useScroll({ container: mainRef }); // Used for parallax if needed globally
+
+  const handleScroll = (e: React.UIEvent<HTMLElement>) => {
+    const currentScrollY = e.currentTarget.scrollTop;
+    setScrolled(currentScrollY > 50);
+
+    if (currentScrollY > prevScrollY.current && currentScrollY > 150) {
       setNavVisible(false); // scrolling down
     } else {
       setNavVisible(true); // scrolling up or at top
     }
-  });
+    prevScrollY.current = currentScrollY;
+  };
 
-  // Inner-scroll tracking for Experience journey timeline (kept since it's a specific functional request)
-  const journeyScrollRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: journeyProg } = useScroll({ container: journeyScrollRef });
-  const progressWidth = useTransform(journeyProg, [0, 1], ["0%", "100%"]);
+  // Horizontal scroll tracking for Portfolio carousel
+  const carouselRef = useRef<HTMLDivElement>(null);
+  
+  const scrollCarousel = (direction: number) => {
+    if (carouselRef.current) {
+      const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 400; // Match approximate card width
+      carouselRef.current.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <main className="relative w-full bg-[#050505] text-foreground font-sans">
+    <main 
+      ref={mainRef} 
+      onScroll={handleScroll}
+      className="relative w-full bg-[#050505] text-foreground font-sans h-screen overflow-y-auto snap-y snap-mandatory"
+    >
       <style dangerouslySetInnerHTML={{ __html: `
-        html {
-          scroll-snap-type: y mandatory;
-          scroll-behavior: smooth;
-        }
         @keyframes marquee-right {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0%); }
@@ -164,15 +193,11 @@ export default function HomeView() {
           animation: marquee-right 25s linear infinite;
         }
       `}} />
-      <AppParticleCanvas />
-
       {/* ── Navbar ────────────────────────────────── */}
-      <nav className={`fixed top-0 w-full z-[100] flex items-center justify-between px-8 transition-all duration-500 ${
-        scrolled
-          ? "py-4 bg-[#050505]/75 backdrop-blur-xl border-b border-white/5"
-          : "py-8 bg-transparent"
+      <nav className={`fixed top-0 w-full z-[100] flex items-center justify-between px-6 md:px-8 transition-all duration-500 bg-[#050505]/75 backdrop-blur-xl border-b border-white/5 ${
+        scrolled ? "py-4" : "py-8"
       } ${navVisible ? "translate-y-0" : "-translate-y-full"}`}>
-        <div className="font-playfair font-bold text-2xl tracking-wide">
+        <div className="font-cinzel font-bold text-2xl tracking-wide">
           Aliffandy<span className="text-accent">.</span>
         </div>
         <div className="flex items-center gap-6">
@@ -184,305 +209,328 @@ export default function HomeView() {
       {/* ── LineSidebar ───────────────────────────── */}
       <div className="fixed right-8 top-1/2 -translate-y-1/2 z-[100] hidden md:block">
         <LineSidebar 
-          items={['Home', 'About', 'Work', 'Experience', 'Contact']}
-          accentColor="#d4af37"
-          textColor="#666"
-          markerColor="#333"
+          items={['Home', 'About', 'Portfolio', 'Experience', 'Contact']}
+          accentColor="#C8A951"
+          textColor="#8C7C6D"
+          markerColor="#4A3F35"
           showIndex={false}
+          fontSize={0.85}
+          itemGap={16}
+          markerLength={35}
+          maxShift={20}
           onItemClick={(index, label) => {
-            const id = label.toLowerCase();
-            // Gunakan anchor div untuk mendapatkan posisi layout asli sebelum elemen sticky menumpuk
-            const anchor = document.getElementById(`anchor-${id}`);
+            const idMap: Record<string, string> = {
+              'home': 'home',
+              'about': 'about',
+              'portfolio': 'work',
+              'experience': 'experience',
+              'contact': 'contact'
+            };
+            const id = idMap[label.toLowerCase()];
+            const anchor = document.getElementById(id);
             if (anchor) {
               const html = document.documentElement;
-              // Matikan fitur snap & native smooth scroll sementara agar JS bisa mengambil alih 100%
-              html.style.scrollSnapType = 'none';
-              html.style.scrollBehavior = 'auto';
-              
-              const targetY = anchor.offsetTop;
-              
-              animate(window.scrollY, targetY, {
-                duration: 0.8,
-                ease: [0.32, 0.72, 0, 1], // easeOut
-                onUpdate: (latest) => window.scrollTo(0, latest),
-                onComplete: () => {
-                  // Kembalikan ke state semula setelah scroll selesai
-                  html.style.scrollSnapType = 'y mandatory';
-                  html.style.scrollBehavior = 'smooth';
-                }
-              });
+              const main = document.querySelector('main');
+              if (main) {
+                  main.style.scrollSnapType = 'none';
+                  main.style.scrollBehavior = 'auto';
+                  
+                  const targetY = anchor.offsetTop;
+                  
+                  animate(main.scrollTop, targetY, {
+                    duration: 0.8,
+                    ease: [0.32, 0.72, 0, 1], // easeOut
+                    onUpdate: (latest) => main.scrollTo(0, latest),
+                    onComplete: () => {
+                      main.style.scrollSnapType = 'y mandatory';
+                      main.style.scrollBehavior = 'smooth';
+                    }
+                  });
+              }
             }
           }}
         />
       </div>
 
-      {/* ── HERO ──────────────────────────────────── */}
-      <div id="anchor-home" className="w-full h-0 m-0 p-0" />
-      <StickySection
-        id="home"
-        className="min-h-screen w-full flex items-center px-8 md:px-20 lg:px-32 z-10"
-      >
-        <div className="w-full max-w-[1600px] mx-auto relative flex items-center min-h-screen">
-          {/* Portrait */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 2, delay: 0.5 }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-[1] opacity-60 hover:opacity-90 transition-opacity duration-500 pointer-events-auto"
-          >
-            <AppAsciiPortrait src="/aliffandy-transparent.png" />
-          </motion.div>
+      
+        {/* ── HERO ──────────────────────────────────── */}
+        <StickySection containerRef={mainRef} className="z-10" id="home" bgImage="/medieval_castle_bg_1790595169316.jpg">
+        <div className="min-h-screen w-full flex items-center px-8 md:px-20 lg:px-32 z-10 relative overflow-hidden">
+          <div className="w-full max-w-[1600px] mx-auto relative flex items-center min-h-screen z-10">
+            {/* Portrait */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, delay: 0.5 }}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-[1] w-[350px] md:w-[500px] lg:w-[700px] opacity-20 md:opacity-40 lg:opacity-60 hover:opacity-90 transition-opacity duration-500 pointer-events-auto"
+            >
+              <AppAsciiPortrait src="/aliffandy-transparent.png" />
+            </motion.div>
 
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col gap-6 w-full lg:w-[45%] relative z-10"
-          >
-            <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-muted uppercase">
-              Fullstack Engineer &middot; Web &amp; Mobile Development
-              <br />ID <span className="text-accent mx-1">*</span> 2026
-            </div>
-            <h1 className="font-playfair text-6xl md:text-[6rem] lg:text-[7.5rem] font-semibold leading-[0.85] tracking-tight mt-4">
-              Muhammad<br /><span className="text-muted">Aliffandy</span>
-            </h1>
-            <p className="mt-8 text-lg md:text-xl max-w-xl text-muted font-light leading-relaxed">
-              Crafting high-performance web applications and robust mobile experiences.
-              I build scalable systems where sophisticated design meets deep engineering craft.
-            </p>
-            <div className="flex flex-wrap items-center gap-6 mt-12">
-              <a href="#work" className="px-8 py-4 bg-white text-black rounded-full font-medium text-sm hover:scale-105 transition-transform duration-300">All projects</a>
-              <button className="px-8 py-4 border border-[#333] text-muted rounded-full font-medium text-sm hover:border-white hover:text-white transition-colors duration-300">Resume</button>
-            </div>
-          </motion.div>
-        </div>
-      </StickySection>
-
-      {/* ── ABOUT ME ──────────────────────────────── */}
-      <div id="anchor-about" className="w-full h-0 m-0 p-0" />
-      <StickySection id="about" className="min-h-screen w-full flex items-center py-24 px-8 md:px-20 lg:px-32 z-20 bg-[#080808] border-t border-[#1a1a1a]">
-        <div className="w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-0">
-          
-          {/* Left: Photos */}
-          {/* FOTO SCALE: ubah max-w-[420px] sesuai keinginan */}
-          <div className="w-full lg:w-[45%] flex justify-center lg:justify-start relative z-10">
-            <div className="w-full max-w-[420px] aspect-[2/3] relative">
-              <Stack
-                randomRotation={true}
-                sensitivity={180}
-                sendToBackOnClick={true}
-                cards={([
-                  "/images/about/IMG_3203.jpg",
-                  "/images/about/IMG_20230317_144142.jpg",
-                  "/images/about/IMG_0634.jpg"
-                ].map((src, i) => (
-                  <img 
-                    key={i} 
-                    src={src} 
-                    alt={`aliffandy-${i + 1}`} 
-                    className="w-full h-full object-cover"
-                  />
-                )) as any)}
-              />
-            </div>
-          </div>
-
-          {/* Right: Pitch */}
-          <div className="w-full lg:w-[45%] flex flex-col items-start text-left relative z-10">
-            <div className="font-mono text-[10px] tracking-[0.3em] text-accent uppercase mb-6">[ ABOUT ME ]</div>
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-8">
-              A developer who <br/><span className="text-muted italic">speaks human.</span>
-            </h2>
-            <p className="text-lg text-muted font-light leading-relaxed mb-6">
-              I don&apos;t just write code; I bridge the gap between technical complexity and business logic. I thrive in presenting pitches, explaining intricate tech stacks to non-technical stakeholders, and ensuring that everyone is on the same page.
-            </p>
-            <p className="text-lg text-muted font-light leading-relaxed mb-10">
-              When I build a product, I&apos;m not just thinking about the architecture—I&apos;m thinking about the story it tells, how it feels in the user&apos;s hands, and how it drives value. Good engineering is invisible; great engineering is understood.
-            </p>
-            <a href="#contact" className="px-8 py-4 border border-[#333] text-foreground rounded-full font-medium text-sm hover:bg-foreground hover:text-background transition-colors duration-300">
-              Let's talk tech
-            </a>
-          </div>
-        </div>
-      </StickySection>
-
-      {/* ── WORK ──────────────────────────────────── */}
-      <div id="anchor-work" className="w-full h-0 m-0 p-0" />
-      <StickySection id="work" className="h-screen w-full bg-[#050505] pt-24 pb-8 px-8 md:px-20 lg:px-32 z-30 border-t border-[#1a1a1a]">
-        <div className="max-w-[1400px] mx-auto w-full h-full flex flex-col">
-          {!activeProject && (
-            <>
-              <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-muted uppercase mb-6 flex-shrink-0">[ PORTFOLIO ]</div>
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 flex-shrink-0">
-                <h2 className="font-playfair text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight">
-                  Selected projects and <br className="hidden md:block" /> case studies.
-                </h2>
+            {/* Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-col gap-6 w-full lg:w-[45%] relative z-10"
+            >
+              <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-accent uppercase">
+                Fullstack Engineer &middot; Web &amp; Mobile Development
+                <br />ID <span className="text-accent mx-1">*</span> 2026
               </div>
-            </>
-          )}
-          
-          <div className="relative w-full flex-grow overflow-y-auto custom-scrollbar pb-24 pr-4">
-            <AnimatePresence mode="wait">
-              {!activeProject ? (
-                <motion.div
-                  key="grid"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full"
-                >
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                    {portfolioData.slice(0, showAllProjects ? portfolioData.length : 6).map((p, i) => (
-                      <AppProjectCard 
-                        key={i} 
-                        index={i} 
-                        title={p.title} 
-                        description={p.description} 
-                        thumbnail={p.thumbnail} 
-                        type={p.type} 
-                        onClick={() => setActiveProject(p as ProjectData)}
+              <h1 className="font-medieval text-6xl md:text-[6rem] lg:text-[7.5rem] font-semibold leading-[0.85] tracking-tight mt-4">
+                Muhammad<br /><span className="text-muted">Aliffandy</span>
+              </h1>
+              <p className="mt-8 text-lg md:text-xl max-w-xl text-muted font-lora leading-relaxed">
+                Crafting high-performance web applications and robust mobile experiences.
+                I build scalable systems where sophisticated design meets deep engineering craft.
+              </p>
+              <div className="flex flex-wrap items-center gap-6 mt-12">
+                <a href="#work" className="px-8 py-4 bg-accent/10 border-double border-4 border-accent text-accent rounded-sm font-medieval font-bold text-sm tracking-widest hover:bg-accent hover:text-background transition-all duration-300 shadow-[0_0_15px_rgba(200,169,81,0.2)]">All Projects</a>
+                <button className="px-8 py-4 border-double border-4 border-[#4A3F35] text-muted rounded-sm font-medieval font-bold text-sm tracking-widest hover:border-accent hover:text-accent transition-all duration-300">Resume</button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+        </StickySection>
+
+        {/* ── ABOUT ME ──────────────────────────────── */}
+        <StickySection containerRef={mainRef} className="z-20" id="about" bgImage="/medieval_study_bg_1790596537699.jpg">
+        <div className="min-h-screen w-full flex items-center py-24 px-8 md:px-20 lg:px-32 z-20 bg-[#1A1613] border-t-4 border-double border-[#2A221C] medieval-bevel">
+          <div className="w-full max-w-[1600px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-0">
+            {/* Left: Photos */}
+            <div className="w-full lg:w-[45%] flex justify-center lg:justify-start relative z-10">
+              <div className="w-full max-w-[280px] md:max-w-[360px] lg:max-w-[420px] aspect-[2/3] relative">
+                <Stack
+                  randomRotation={true}
+                  sensitivity={180}
+                  sendToBackOnClick={true}
+                  cards={([
+                    "/images/about/IMG_3203.jpg",
+                    "/images/about/IMG_20230317_144142.jpg",
+                    "/images/about/IMG_0634.jpg"
+                  ].map((src, i) => (
+                    <div key={i} className="w-full h-full bg-white p-3 md:p-4 shadow-[0_0_40px_rgba(200,169,81,0.6)]" style={{ transform: "translateZ(0)", willChange: "transform" }}>
+                      <img 
+                        src={src} 
+                        alt={`aliffandy-${i + 1}`} 
+                        className="w-full h-full object-cover"
+                        style={{ transform: "translateZ(0)", willChange: "transform" }}
                       />
-                    ))}
-                  </div>
-                  <div className="w-full flex justify-center mt-16">
+                    </div>
+                  )) as any)}
+                />
+              </div>
+            </div>
+
+            {/* Right: Pitch */}
+            <div className="w-full lg:w-[45%] flex flex-col items-start text-left relative z-10">
+              <div className="font-mono text-[10px] tracking-[0.3em] text-accent uppercase mb-6">[ ABOUT ME ]</div>
+              <h2 className="font-medieval text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-8">
+                A software engineer who <br/><span className="text-muted italic">speaks human.</span>
+              </h2>
+              <p className="text-lg text-muted font-lora leading-relaxed mb-6">
+                I don&apos;t just write code; I bridge the gap between technical complexity and business logic. I thrive in presenting pitches, explaining intricate tech stacks to non-technical stakeholders, and ensuring that everyone is on the same page.
+              </p>
+              <p className="text-lg text-muted font-lora leading-relaxed mb-10">
+                When I build a product, I&apos;m not just thinking about the architecture—I&apos;m thinking about the story it tells, how it feels in the user&apos;s hands, and how it drives value. Good engineering is invisible; great engineering is understood.
+              </p>
+              <a href="#contact" className="px-8 py-4 border-double border-4 border-[#4A3F35] text-accent rounded-sm font-medieval font-bold tracking-widest text-sm hover:bg-accent hover:text-background transition-colors duration-300 shadow-[0_0_15px_rgba(200,169,81,0.1)]">
+                Let's talk tech
+              </a>
+            </div>
+          </div>
+        </div>
+        </StickySection>
+
+        {/* ── WORK ──────────────────────────────────── */}
+        <StickySection containerRef={mainRef} className="z-30" id="work" bgImage="/medieval_vault_bg_1790596550911.jpg">
+        <div className="h-screen w-full bg-[#110E0B] pt-24 pb-8 px-8 md:px-20 lg:px-32 z-30 border-t-4 border-double border-[#2A221C] medieval-bevel">
+          <div className="max-w-[1400px] mx-auto w-full h-full flex flex-col relative z-10">
+            {!activeProject && (
+              <>
+                <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-accent uppercase mb-6 flex-shrink-0">[ PORTFOLIO ]</div>
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 flex-shrink-0">
+                  <h2 className="font-medieval text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight">
+                    Selected projects <br className="hidden md:block" /> and case studies.
+                  </h2>
+                  
+                  {/* Horizontal Carousel Controls */}
+                  <div className="flex items-center gap-4">
                     <button 
-                      onClick={() => setShowAllProjects(!showAllProjects)}
-                      className="px-8 py-4 bg-white text-black rounded-full font-medium text-sm hover:scale-105 transition-transform duration-300 inline-flex items-center gap-2"
+                      onClick={() => scrollCarousel(-1)} 
+                      className="p-4 bg-[#14110E] border-double border-4 border-[#2A241E] hover:border-accent text-accent rounded-sm transition-colors shadow-lg hover:shadow-[0_0_15px_rgba(200,169,81,0.2)]"
+                      aria-label="Scroll left"
                     >
-                      {showAllProjects ? "Show less projects" : "View all projects"} 
-                      <Icon icon={showAllProjects ? "mdi:arrow-up" : "mdi:arrow-down"} className="text-lg" />
+                      <Icon icon="mdi:arrow-left" className="text-xl" />
+                    </button>
+                    <button 
+                      onClick={() => scrollCarousel(1)} 
+                      className="p-4 bg-[#14110E] border-double border-4 border-[#2A241E] hover:border-accent text-accent rounded-sm transition-colors shadow-lg hover:shadow-[0_0_15px_rgba(200,169,81,0.2)]"
+                      aria-label="Scroll right"
+                    >
+                      <Icon icon="mdi:arrow-right" className="text-xl" />
                     </button>
                   </div>
-                </motion.div>
-              ) : (
-                <ProjectDetailView 
-                  key="detail"
-                  project={activeProject} 
-                  allProjects={portfolioData as ProjectData[]}
-                  onSelectProject={setActiveProject}
-                  onClose={() => setActiveProject(null)} 
-                />
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-      </StickySection>
-
-      {/* ── EXPERIENCE ────────────────────────────── */}
-      <div id="anchor-experience" className="w-full h-0 m-0 p-0" />
-      <StickySection id="experience" className="min-h-screen w-full bg-[#060606] py-24 px-8 md:px-20 lg:px-32 z-40 border-t border-[#1a1a1a] flex items-center">
-        <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row gap-16 lg:gap-32">
-          
-          {/* Left column */}
-          <div className="w-full lg:w-1/3 flex-shrink-0 lg:sticky lg:top-32 h-max">
-            <div className="font-mono text-[10px] tracking-[0.3em] text-muted uppercase mb-6">[ MY JOURNEY ]</div>
-            <h2 className="font-playfair text-5xl md:text-6xl font-semibold tracking-tight mb-8">
-              Where I have <br /> worked
-            </h2>
-            <p className="text-muted font-light leading-relaxed mb-12">
-              Product design across content, AI, and enterprise, spanning financial intelligence,
-              news, healthcare, logistics, and retail.
-            </p>
-            <div className="flex items-center justify-between font-mono text-[10px] tracking-widest text-muted uppercase mb-2">
-              <span>PAST</span><span>PRESENT</span>
-            </div>
-            <div className="w-full h-[1px] bg-[#222] relative">
-              <motion.div className="absolute top-0 left-0 h-[1px] bg-accent" style={{ width: progressWidth }} />
-            </div>
-          </div>
-
-          {/* Right inner-scroll column */}
-          <div
-            ref={journeyScrollRef}
-            className="w-full lg:w-2/3 relative border-l border-[#222] pl-8 md:pl-16 flex flex-col gap-20 py-4 h-[70vh] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#333] hover:[&::-webkit-scrollbar-thumb]:bg-accent [&::-webkit-scrollbar-thumb]:rounded-full"
-          >
-            {experienceItems.map((item, idx) => (
-              <div key={idx} className="relative group">
-                <div className="absolute -left-[37px] md:-left-[69px] top-1 w-2 h-2 rounded-full bg-[#444] group-hover:bg-accent transition-colors duration-300 ring-4 ring-[#060606]" />
-                <div className="font-mono text-[10px] tracking-widest uppercase mb-4 flex flex-col gap-1">
-                  <span className="text-[#649a9e]">{item.company} &middot; {item.role}</span>
-                  <span className="text-[#555]">{item.meta}</span>
                 </div>
-                <h3 className="font-playfair text-3xl md:text-4xl font-semibold text-foreground mb-4">{item.title}</h3>
-                <p className="text-muted font-light text-base leading-relaxed max-w-2xl">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </StickySection>
-
-      {/* ── CONTACT & FOOTER ─────────────────────────────────── */}
-      <div id="anchor-contact" className="w-full h-0 m-0 p-0" />
-      <StickySection id="contact" className="w-full bg-[#0a0a0a] z-50 border-t border-[#1a1a1a] flex flex-col">
-        
-        <div className="min-h-screen w-full flex items-center justify-center relative px-8 md:px-20 lg:px-32">
-          <div className="max-w-4xl mx-auto text-center flex flex-col items-center pb-24">
-            <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-accent uppercase mb-8">Let's connect</div>
-            <h2 className="font-playfair text-4xl md:text-5xl lg:text-7xl font-semibold leading-tight mb-12">
-              Have a project in mind? <br className="hidden md:block" /> Let's build something{" "}
-              <span className="text-muted">extraordinary.</span>
-            </h2>
-            <p className="text-lg md:text-xl text-muted font-light leading-relaxed max-w-2xl mb-12">
-              Whether you need a fullstack application built from the ground up or a technical
-              partner to explain complex architecture to your stakeholders, I'm ready to help.
-            </p>
-            <a href="mailto:aliffandy@example.com" className="px-10 py-5 bg-foreground text-background rounded-full font-medium text-base hover:scale-105 transition-transform duration-300 flex items-center gap-3">
-              Start a conversation <Icon icon="mdi:arrow-right" />
-            </a>
-          </div>
-
-          {/* Tech Stack Marquee */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden flex items-center border-t border-[#111] py-8">
-            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+              </>
+            )}
             
-            <div className="flex w-max animate-marquee-right">
-              {[
-                "simple-icons:react",
-                "simple-icons:nextdotjs",
-                "simple-icons:typescript",
-                "simple-icons:tailwindcss",
-                "simple-icons:nodedotjs",
-                "simple-icons:python",
-                "simple-icons:docker",
-                "simple-icons:framer",
-                "simple-icons:figma",
-                "simple-icons:amazonwebservices",
-                "simple-icons:react",
-                "simple-icons:nextdotjs",
-                "simple-icons:typescript",
-                "simple-icons:tailwindcss",
-                "simple-icons:nodedotjs",
-                "simple-icons:python",
-                "simple-icons:docker",
-                "simple-icons:framer",
-                "simple-icons:figma",
-                "simple-icons:amazonwebservices"
-              ].map((icon, idx) => (
-                <div key={idx} className="flex items-center justify-center mx-8 md:mx-12 text-3xl md:text-4xl text-[#333] hover:text-white transition-colors duration-300 cursor-pointer">
-                  <Icon icon={icon} />
-                </div>
-              ))}
+            <div className="relative w-full flex-grow overflow-hidden">
+              <AnimatePresence mode="wait">
+                {!activeProject ? (
+                  <motion.div
+                    key="grid"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.4 }}
+                    className="w-full"
+                  >
+                    <div 
+                      ref={carouselRef}
+                      className="flex overflow-x-auto gap-6 pb-12 w-full px-4 md:px-0 [&::-webkit-scrollbar]:h-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#4A3F35] hover:[&::-webkit-scrollbar-thumb]:bg-accent"
+                    >
+                      {portfolioData.map((p, i) => (
+                        <div key={i} className="w-[85vw] md:w-[350px] lg:w-[400px] shrink-0 flex relative">
+                          <AppProjectCard 
+                            index={i} 
+                            title={p.title} 
+                            description={p.description} 
+                            thumbnail={p.thumbnail} 
+                            type={p.type} 
+                            onClick={() => setActiveProject(p as ProjectData)}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : (
+                  <ProjectDetailView 
+                    key="detail"
+                    project={activeProject} 
+                    allProjects={portfolioData as ProjectData[]}
+                    onSelectProject={setActiveProject}
+                    onClose={() => setActiveProject(null)} 
+                  />
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
+        </StickySection>
 
-        {/* ── FOOTER ─────────────────────────────────── */}
-        <footer className="w-full bg-[#050505] border-t border-[#111] py-6 px-8 md:px-20 lg:px-32 mt-auto">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="font-playfair font-bold text-xl tracking-wide">Aliffandy<span className="text-accent">.</span></div>
-            <div className="text-muted text-sm font-light">© {new Date().getFullYear()} Muhammad Aliffandy. All rights reserved.</div>
-            <div className="flex items-center gap-6">
-              <a href="mailto:hello@example.com" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">Email</a>
-              <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">LinkedIn</a>
-              <a href="https://github.com" target="_blank" rel="noreferrer" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">GitHub</a>
+        {/* ── EXPERIENCE ────────────────────────────── */}
+        <StickySection containerRef={mainRef} className="z-40" id="experience" bgImage="/medieval_council_bg_1790596566385.jpg">
+        <div className="min-h-screen w-full bg-[#0F0C0A] py-24 px-8 md:px-20 lg:px-32 z-40 border-t-4 border-double border-[#2A221C] medieval-bevel flex items-center">
+          <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row gap-12 lg:gap-16 relative z-10">
+            {/* Left column */}
+            <div className="w-full lg:flex-1 flex-shrink-0 lg:sticky lg:top-32 h-max">
+              <div className="font-mono text-[10px] tracking-[0.3em] text-accent uppercase mb-6">[ EXPERIENCE ]</div>
+              <h2 className="font-medieval text-5xl md:text-6xl font-semibold tracking-tight mb-8">
+                Where I have <br className="hidden md:block" /> worked
+              </h2>
+              <p className="text-muted font-lora leading-relaxed mb-12">
+                Product design across content, AI, and enterprise, spanning financial intelligence,
+                news, healthcare, logistics, and retail.
+              </p>
+              <div className="flex items-center justify-between font-mono text-[10px] tracking-widest text-muted uppercase mb-2">
+                <span>PAST</span><span>PRESENT</span>
+              </div>
+              <div className="w-full h-[1px] bg-[#222] relative">
+                <div className="absolute top-0 left-0 h-[1px] bg-accent w-full" />
+              </div>
+            </div>
+
+            {/* Right inner-scroll column */}
+            <div className="w-full lg:flex-[2] flex-shrink-0 pr-0 md:pr-4 relative h-[70vh] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#333] hover:[&::-webkit-scrollbar-thumb]:bg-accent">
+              <div className="relative border-l-2 border-double border-[#4A3F35] pl-8 md:pl-16 ml-4 md:ml-8 flex flex-col gap-20 py-4">
+                {experienceItems.map((item, idx) => (
+                  <div key={idx} className="relative group">
+                    <div className="absolute -left-[48px] md:-left-[80px] top-1 w-8 h-8 rotate-45 bg-[#4A3F35] border-2 border-accent group-hover:bg-accent transition-colors duration-300 ring-4 ring-[#0F0C0A]" />
+                    <div className="font-mono text-[10px] tracking-widest uppercase mb-4 flex flex-col gap-1">
+                      <span className="text-[#649a9e] group-hover:text-accent transition-colors duration-300">{item.company} &middot; {item.role}</span>
+                      <span className="text-muted">{item.meta}</span>
+                    </div>
+                    <h3 className="font-medieval text-3xl md:text-4xl font-semibold text-foreground mb-4">{item.title}</h3>
+                    <p className="text-muted font-lora text-base leading-relaxed max-w-2xl">{item.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </footer>
-      </StickySection>
+        </div>
+        </StickySection>
 
+        {/* ── CONTACT & FOOTER ─────────────────────────────────── */}
+        <StickySection className="z-50" id="contact" bgImage="/medieval_tavern_bg_1790596579381.jpg">
+        <div className="w-full bg-[#14110E] z-50 border-t-4 border-double border-[#2A221C] flex flex-col medieval-bevel">
+          <div className="min-h-screen w-full flex items-center justify-center relative px-8 md:px-20 lg:px-32 z-10">
+            <div className="max-w-4xl mx-auto text-center flex flex-col items-center pb-24">
+              <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-accent uppercase mb-8">Let's connect</div>
+              <h2 className="font-medieval text-4xl md:text-5xl lg:text-7xl font-semibold leading-tight mb-12">
+                Have a project in mind? <br className="hidden md:block" /> Let's build something{" "}
+                <span className="text-muted">extraordinary.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-muted font-light leading-relaxed max-w-2xl mb-12">
+                Whether you need a fullstack application built from the ground up or a technical
+                partner to explain complex architecture to your stakeholders, I'm ready to help.
+              </p>
+              <a href="mailto:aliffandy@example.com" className="px-10 py-5 bg-accent/10 border-double border-4 border-accent text-accent rounded-sm font-medieval font-bold text-base hover:bg-accent hover:text-background transition-all duration-300 flex items-center gap-3 shadow-[0_0_20px_rgba(200,169,81,0.2)]">
+                Send a Raven <Icon icon="game-icons:bird-twitter" className="text-2xl" />
+              </a>
+            </div>
+
+            {/* Tech Stack Marquee */}
+            <div className="absolute bottom-0 left-0 w-full overflow-hidden flex items-center border-t border-[#111] py-8">
+              <div className="absolute left-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-r from-[#14110E] to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 md:w-40 bg-gradient-to-l from-[#14110E] to-transparent z-10 pointer-events-none" />
+              
+              <div className="flex w-max animate-marquee-right">
+                {[
+                  "simple-icons:react",
+                  "simple-icons:nextdotjs",
+                  "simple-icons:typescript",
+                  "simple-icons:tailwindcss",
+                  "simple-icons:nodedotjs",
+                  "simple-icons:python",
+                  "simple-icons:docker",
+                  "simple-icons:framer",
+                  "simple-icons:figma",
+                  "simple-icons:amazonwebservices",
+                  "simple-icons:react",
+                  "simple-icons:nextdotjs",
+                  "simple-icons:typescript",
+                  "simple-icons:tailwindcss",
+                  "simple-icons:nodedotjs",
+                  "simple-icons:python",
+                  "simple-icons:docker",
+                  "simple-icons:framer",
+                  "simple-icons:figma",
+                  "simple-icons:amazonwebservices"
+                ].map((icon, idx) => (
+                  <div key={idx} className="flex items-center justify-center mx-8 md:mx-12 text-3xl md:text-4xl text-[#333] hover:text-accent transition-colors duration-300 cursor-pointer">
+                    <Icon icon={icon} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── FOOTER ─────────────────────────────────── */}
+          <footer className="w-full bg-[#050505] border-t border-[#111] py-6 px-8 md:px-20 lg:px-32 mt-auto">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="font-cinzel font-bold text-xl tracking-wide">Aliffandy<span className="text-accent">.</span></div>
+              <div className="text-muted text-sm font-light">© {new Date().getFullYear()} Muhammad Aliffandy. All rights reserved.</div>
+              <div className="flex items-center gap-6">
+                <a href="mailto:hello@example.com" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">Email</a>
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">LinkedIn</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer" className="text-sm text-muted hover:text-accent transition-colors font-mono uppercase tracking-wider">GitHub</a>
+              </div>
+            </div>
+          </footer>
+        </div>
+        </StickySection>
     </main>
   );
 }

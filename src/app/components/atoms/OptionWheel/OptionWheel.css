@@ -24,7 +24,10 @@
   position: absolute;
   top: 50%;
   left: var(--ow-inset);
-  white-space: nowrap;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 250px; /* Force wrapping on long titles */
+  text-align: left;
   font-size: var(--ow-font-size);
   line-height: 1;
   font-weight: 200;
@@ -39,6 +42,7 @@
   left: auto;
   right: var(--ow-inset);
   transform-origin: right center;
+  text-align: right;
 }
 
 .option-wheel__item--selected {
