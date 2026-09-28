@@ -41,7 +41,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Aliffandy✌️",
+  title: "Aliffandy",
   description: "That the portfolio of Fandy, a Fullstack Engineer",
 };
 

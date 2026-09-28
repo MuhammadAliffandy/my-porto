@@ -1,49 +1,68 @@
-import { Icon } from "@iconify/react/dist/iconify.js";
-import AppContainer from "../../atoms/AppContainer/AppContainer";
-import AppHeadline from "../../molecules/AppHeadline/AppHeadline";
+"use client";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Icon } from "@iconify/react";
 
 interface AppProjectCardProps {
-  className?: string;
-  title?: string;
-  subtitle?: string;
-  imageUrl?: string;
-  onClick?: () => void;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
+  index: number;
+  title: string;
+  description: string;
+  thumbnail: string;
+  type: string;
+  onClick: () => void;
 }
 
-const AppProjectCard: React.FC<AppProjectCardProps> = (props) => {
-  return (
-    <AppContainer
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}
-      className={`${props.className} bg-white  p-[15px] rounded-xl flex flex-col gap-[10px] text-black w-full  transition transform hover:scale-110 duration-300 ease-in-out `}
-    >
-      <AppContainer className="w-full h-[200px] relative">
-        <AppContainer
-          className="w-full h-full mb-[15px] cursor-pointer bg-cover rounded-lg"
-          style={{
-            backgroundImage: `url(${props.imageUrl})`,
-          }}
-        />
-        <Icon
-          onClick={props.onClick}
-          icon="fluent:open-16-filled"
-          className="absolute top-2 right-2 text-white text-[35px] p-[4px] bg-black rounded-xl cursor-pointer"
-        />
-      </AppContainer>
-      <AppHeadline
-        className="items-start"
-        title={props.title || "Project Title"}
-        titleClassName="text-[24px] font-bold text-black line-clamp-1 "
-        subtitle={
-          props.subtitle ||
-          "At eligendi voluptate qui unde. Asperiores unde et dolor reprehenderit delectus repellat asperiores. Consequatur et non vitae. Consequatur ut aspernatur veniam debitis. Quidem aut necessitatibus rerum dolor et architecto. Maxime ducimus et."
-        }
-        subtitleClassName="text-[14px] line-clamp-3 text-gray-600"
-      />
-    </AppContainer>
-  );
-};
+export default function AppProjectCard({ index, title, description, thumbnail, type, onClick }: AppProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Parallax configuration for the image
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Moves the image vertically within its container based on scroll
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
 
-export default AppProjectCard;
+  return (
+    <motion.div 
+      onClick={onClick}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="group flex flex-col bg-[#0A0A0A] rounded-2xl border border-[#222] overflow-hidden hover:border-[#444] transition-colors duration-300 cursor-pointer h-full"
+    >
+      {/* Image Section with Parallax */}
+      <div className="w-full aspect-[4/3] overflow-hidden bg-[#111] relative">
+        <motion.img
+          style={{ y: imageY, scale: 1.2 }} // Pre-scaled to prevent edges showing during parallax
+          src={thumbnail}
+          alt={title}
+          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.25] group-hover:opacity-80"
+        />
+      </div>
+
+      {/* Text Section */}
+      <div className="flex flex-col flex-grow p-6 md:p-8 relative z-10 bg-[#0A0A0A]">
+        <div className="font-mono text-[10px] tracking-widest text-muted uppercase mb-4 flex items-center gap-2">
+          {type} APPLICATION
+        </div>
+        
+        <h3 className="font-playfair text-2xl lg:text-3xl font-semibold mb-4 text-foreground group-hover:text-accent transition-colors duration-300 leading-snug">
+          {title}
+        </h3>
+        
+        <p className="text-muted font-light text-sm leading-relaxed mb-8 flex-grow line-clamp-3">
+          {description}
+        </p>
+        
+        {/* Footer / Call to action */}
+        <div className="flex items-center text-[10px] font-mono tracking-widest uppercase text-muted group-hover:text-accent transition-colors mt-auto">
+          VIEW DETAILS <Icon icon="mdi:arrow-top-right" className="ml-1 text-sm" />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
