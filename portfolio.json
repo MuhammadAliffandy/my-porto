@@ -2,7 +2,7 @@
   {
     "title": "Mini Notion",
     "description": "MiniNotion is a collaborative note-taking web app inspired by Notion and Google Docs, featuring real-time editing and flexible content structuring.",
-    "feature": "User Authentication – Secure login using JWT and cookies\nRealtime Editing – Instant updates across users via WebSocket\nDrag & Drop – Reorder titles and content blocks easily\nRich Text & Media – Support for title, subtitle, paragraph, and image blocks\nFull CRUD – Create, read, update, and delete notes and blocks\nLive Collaboration – Real-time typing and changes reflected instantly",
+    "feature": "User Authentication \u2013 Secure login using JWT and cookies\nRealtime Editing \u2013 Instant updates across users via WebSocket\nDrag & Drop \u2013 Reorder titles and content blocks easily\nRich Text & Media \u2013 Support for title, subtitle, paragraph, and image blocks\nFull CRUD \u2013 Create, read, update, and delete notes and blocks\nLive Collaboration \u2013 Real-time typing and changes reflected instantly",
     "images": [
       "/images/project/notionclone/image.png",
       "/images/project/notionclone/image (1).png",
@@ -11,12 +11,26 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/notionclone.svg",
     "type": "web",
-    "icons": [1, 2, 4, 10, 11, 14, 16, 17, 21, 23, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      4,
+      10,
+      11,
+      14,
+      16,
+      17,
+      21,
+      23,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Forwardin",
     "description": "Forwardin is a message automation website that leverages the WhatsApp platform for chat management and automation across multiple devices.",
-    "feature": "User Authentication – Login with Google & JWT Authentication User\nRole Management – Admin, Customer Support, and Agent\nMass Messaging & Automation – Broadcast campaigns, auto-reply, and customer service chatbot\nContact Management – User contact storage and segmentation\nRealtime Messaging – Live communication using WebSocket Device QR\nWhatsApp API – WhatsApp API integration via QR Code\nInteractive UI – Modern design using Material UI with Single Page Application (SPA) navigation",
+    "feature": "User Authentication \u2013 Login with Google & JWT Authentication User\nRole Management \u2013 Admin, Customer Support, and Agent\nMass Messaging & Automation \u2013 Broadcast campaigns, auto-reply, and customer service chatbot\nContact Management \u2013 User contact storage and segmentation\nRealtime Messaging \u2013 Live communication using WebSocket Device QR\nWhatsApp API \u2013 WhatsApp API integration via QR Code\nInteractive UI \u2013 Modern design using Material UI with Single Page Application (SPA) navigation",
     "images": [
       "/images/project/forwardin/image.png",
       "/images/project/forwardin/image (1).png",
@@ -28,12 +42,23 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/forwardin.svg",
     "type": "web",
-    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      16,
+      17,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Planify",
     "description": "Craftiq is a content management system designed to help SMEs manage their product content across three major social media platforms (Facebook, Instagram, and Twitter ) while streamlining their marketing efforts.",
-    "feature": "Social Media Integration – Manage content across Facebook, Instagram, and Twitter in one platform\n Post Scheduling & Automation – Schedule and automate content posting for better engagement\nContent Management – Organize and categorize product-related content efficiently\nMarketing  Management – Plan and track structured marketing from engagement traffic\nAnalytics & Insights – Monitor performance metrics and audience engagement\nInteractive Dashboard – User-friendly interface with real-time content tracking",
+    "feature": "Social Media Integration \u2013 Manage content across Facebook, Instagram, and Twitter in one platform\n Post Scheduling & Automation \u2013 Schedule and automate content posting for better engagement\nContent Management \u2013 Organize and categorize product-related content efficiently\nMarketing  Management \u2013 Plan and track structured marketing from engagement traffic\nAnalytics & Insights \u2013 Monitor performance metrics and audience engagement\nInteractive Dashboard \u2013 User-friendly interface with real-time content tracking",
     "images": [
       "/images/project/planify/image.png",
       "/images/project/planify/image (1).png",
@@ -42,7 +67,18 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/planify.svg",
     "type": "web",
-    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      16,
+      17,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Satujuta App",
@@ -59,7 +95,16 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/satujuta.svg",
     "type": "mobile",
-    "icons": [6, 9, 16, 24, 25, 26, 28, 30]
+    "icons": [
+      6,
+      9,
+      16,
+      24,
+      25,
+      26,
+      28,
+      30
+    ]
   },
   {
     "title": "Laundry Net",
@@ -81,13 +126,21 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/laundry.svg",
     "type": "mobile",
-    "icons": [6, 9, 16, 24, 25, 26, 28, 30]
+    "icons": [
+      6,
+      9,
+      16,
+      24,
+      25,
+      26,
+      28,
+      30
+    ]
   },
-
   {
     "title": "SpeakUp App",
     "description": "SpeakUp is a web platform designed to help individuals who struggle to express themselves openly. It provides a safe space where users can share their thoughts, feelings, and opinions anonymously through short statements, similar to anonymous tweets.",
-    "feature": "Anonymous Posting – Users can freely share statements without identity disclosure.\nCommunity Engagement – Others can react, comment, and interact anonymously.\nUser Dashboard – Personalized dashboard to track posted statements, reactions received, and engagement analytics.\nCross-Platform Access – Responsive design ensuring seamless experience across desktop and mobile devices.\nUser Authentication - Login and registration user",
+    "feature": "Anonymous Posting \u2013 Users can freely share statements without identity disclosure.\nCommunity Engagement \u2013 Others can react, comment, and interact anonymously.\nUser Dashboard \u2013 Personalized dashboard to track posted statements, reactions received, and engagement analytics.\nCross-Platform Access \u2013 Responsive design ensuring seamless experience across desktop and mobile devices.\nUser Authentication - Login and registration user",
     "images": [
       "/images/project/speakup/image (1).png",
       "/images/project/speakup/image (2).png",
@@ -99,12 +152,24 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/speakup.svg",
     "type": "web",
-    "icons": [1, 2, 3, 10, 11, 16, 17, 23, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      16,
+      17,
+      23,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Culture Trip",
     "description": "Culture Trip is a travel e-commerce application designed to help tourists discover interesting destinations, access real-time weather information, and track their journeys seamlessly. With advanced features, this app offers a more structured and interactive travel experience.",
-    "feature": "Camera User – Utilize the camera for user profile \nWeather & Travel Data API – Display real-time weather updates and travel destination recommendations based on live data.\nGoogle Maps Track Record – Record and display users' travel routes from their starting point to their destination using Google Maps API.\nUser Dashboard – A personalized dashboard to view travel history and destination recommendations.\nUser Authentication – Login and registration system for a more personalized and secure experience.",
+    "feature": "Camera User \u2013 Utilize the camera for user profile \nWeather & Travel Data API \u2013 Display real-time weather updates and travel destination recommendations based on live data.\nGoogle Maps Track Record \u2013 Record and display users' travel routes from their starting point to their destination using Google Maps API.\nUser Dashboard \u2013 A personalized dashboard to view travel history and destination recommendations.\nUser Authentication \u2013 Login and registration system for a more personalized and secure experience.",
     "images": [
       "/images/project/culture/image.jpg",
       "/images/project/culture/image (1).jpg",
@@ -121,12 +186,22 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/culture.svg",
     "type": "mobile",
-    "icons": [6, 9, 16, 20, 24, 25, 26, 28, 30]
+    "icons": [
+      6,
+      9,
+      16,
+      20,
+      24,
+      25,
+      26,
+      28,
+      30
+    ]
   },
   {
     "title": "E-Commerce Security",
     "description": "E-Commerce Security is an innovative e-commerce platform that integrates advanced security techniques to protect sensitive transaction data. By utilizing Steganography (LSB method) and RSA encryption, the system ensures that purchase details are securely embedded within product images, preventing unauthorized access and enhancing transaction confidentiality.",
-    "feature": "Secure Transaction Data Embedding – Encrypts purchase details with RSA and hides them in product images using LSB Steganography.\nData Extraction & Decryption – Allows authorized users to retrieve and decrypt hidden transaction details.\nProduct Image-Based Authentication – Verifies the authenticity of transactions through steganographic data validation.\nUser Role Management – Supports Admin (managing encryption & transaction security) and Customer (receiving secured images).\nSecure File Handling & Storage – Ensures integrity by preventing unauthorized modifications to images.\nEncrypted Data Transfer – Uses HTTPS and secure APIs to protect communication during transactions.",
+    "feature": "Secure Transaction Data Embedding \u2013 Encrypts purchase details with RSA and hides them in product images using LSB Steganography.\nData Extraction & Decryption \u2013 Allows authorized users to retrieve and decrypt hidden transaction details.\nProduct Image-Based Authentication \u2013 Verifies the authenticity of transactions through steganographic data validation.\nUser Role Management \u2013 Supports Admin (managing encryption & transaction security) and Customer (receiving secured images).\nSecure File Handling & Storage \u2013 Ensures integrity by preventing unauthorized modifications to images.\nEncrypted Data Transfer \u2013 Uses HTTPS and secure APIs to protect communication during transactions.",
     "images": [
       "/images/project/secure/image.png",
       "/images/project/secure/image (1).png",
@@ -136,12 +211,20 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/secure.svg",
     "type": "web",
-    "icons": [1, 2, 3, 11, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      11,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Kumbangsari web ",
     "description": "Kumbangsari Web is a web platform designed to showcase village potential, provide official village information, and support the local economy through an integrated e-commerce system. This platform helps villages promote their culture, products, and updates in a structured and accessible manner.",
-    "feature": "Village Profile – Displays essential village information, history, demographics, and governance structure.\nVillage Potentials – Highlights economic, tourism, agricultural, and cultural assets unique to the village.\nVillage Marketplace – Enables local businesses and farmers to sell their products online, supporting economic growth.\nVillage News & Updates – Provides the latest information, events, and announcements from the village government.",
+    "feature": "Village Profile \u2013 Displays essential village information, history, demographics, and governance structure.\nVillage Potentials \u2013 Highlights economic, tourism, agricultural, and cultural assets unique to the village.\nVillage Marketplace \u2013 Enables local businesses and farmers to sell their products online, supporting economic growth.\nVillage News & Updates \u2013 Provides the latest information, events, and announcements from the village government.",
     "images": [
       "/images/project/kumbangsari/image (1).png",
       "/images/project/kumbangsari/image (2).png",
@@ -152,12 +235,23 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/kumbangsari.svg",
     "type": "web",
-    "icons": [1, 2, 3, 10, 11, 16, 17, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      10,
+      11,
+      16,
+      17,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Headposr W EfficientNet",
     "description": "HeadPosr Web is a web-based application that utilizes HeadPoseR with EfficientNet as its backbone to estimate head poses in real time. By leveraging deep learning and computer vision, the system can accurately predict yaw, pitch, and roll angles from facial images or live video feeds.",
-    "feature": "Head Pose Estimation – Detects and predicts head orientation in real time using a trained deep learning model.\nEfficientNet Backbone – Utilizes EfficientNet-B0 for feature extraction, ensuring efficient and accurate predictions.\nLive Camera Detection – Supports real-time head pose analysis using webcam input..\nVisualization & Analytics – Displays detected pose angles and overlays reference axes on the face.",
+    "feature": "Head Pose Estimation \u2013 Detects and predicts head orientation in real time using a trained deep learning model.\nEfficientNet Backbone \u2013 Utilizes EfficientNet-B0 for feature extraction, ensuring efficient and accurate predictions.\nLive Camera Detection \u2013 Supports real-time head pose analysis using webcam input..\nVisualization & Analytics \u2013 Displays detected pose angles and overlays reference axes on the face.",
     "images": [
       "/images/project/headposr/image.png",
       "/images/project/headposr/image (1).png",
@@ -167,12 +261,21 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/headposr.svg",
     "type": "web",
-    "icons": [1, 2, 3, 5, 19, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      5,
+      19,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Sentiment analysis web",
     "description": "This is a web-based sentiment analysis platform that evaluates user reviews of public facilities in Jember, sourced from Google Maps. The system applies Logistic Regression (LR) for sentiment classification and utilizes Latent Dirichlet Allocation (LDA) to extract key topics from negative reviews, providing deeper insights into public concerns.",
-    "feature": "Sentiment Analysis – Classifies user reviews into positive, neutral, or negative using a trained Logistic Regression model.\nTopic Modeling with LDA – Extracts key themes from negative reviews to identify common issues in local facilities.\nFacility-Based Sentiment Insights – Provides sentiment breakdowns for different locations, such as parks, hospitals, public offices, and transportation hubs.\nInteractive Analytics Dashboard – Visualizes sentiment trends, word clouds, and top negative topics for better decision-making.\nGoogle Maps Integration – Displays sentiment scores directly on a map for easy facility evaluation.",
+    "feature": "Sentiment Analysis \u2013 Classifies user reviews into positive, neutral, or negative using a trained Logistic Regression model.\nTopic Modeling with LDA \u2013 Extracts key themes from negative reviews to identify common issues in local facilities.\nFacility-Based Sentiment Insights \u2013 Provides sentiment breakdowns for different locations, such as parks, hospitals, public offices, and transportation hubs.\nInteractive Analytics Dashboard \u2013 Visualizes sentiment trends, word clouds, and top negative topics for better decision-making.\nGoogle Maps Integration \u2013 Displays sentiment scores directly on a map for easy facility evaluation.",
     "images": [
       "/images/project/sentiment/image.png",
       "/images/project/sentiment/image (1).png",
@@ -181,12 +284,21 @@
     "projectLink": "",
     "thumbnail": "/images/thumbnail/sentiment.svg",
     "type": "web",
-    "icons": [1, 2, 3, 5, 19, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      5,
+      19,
+      24,
+      28,
+      30
+    ]
   },
   {
     "title": "Discord Bot Music",
     "description": "MelodyBot is a Discord bot that allows users to stream music in voice channels, providing a seamless listening experience with various playback controls. Built using Discord.js (or discord.py) and integrated with YouTube API, the bot supports high-quality audio streaming, queue management, and interactive commands.",
-    "feature": "Music Playback – Plays songs from YouTube or other supported sources in Discord voice channels.\nQueue Management – Allows users to add, remove, and reorder tracks in the queue.\nPlayback Controls – Supports play, pause, resume, skip, stop, and loop commands.\nSearch & Auto-Play – Users can search for songs by title, and the bot automatically plays the best match.\nLyrics Integration – Retrieves song lyrics for users upon request.\nUser-Friendly Commands – Simple bot commands for easy interaction via text channels",
+    "feature": "Music Playback \u2013 Plays songs from YouTube or other supported sources in Discord voice channels.\nQueue Management \u2013 Allows users to add, remove, and reorder tracks in the queue.\nPlayback Controls \u2013 Supports play, pause, resume, skip, stop, and loop commands.\nSearch & Auto-Play \u2013 Users can search for songs by title, and the bot automatically plays the best match.\nLyrics Integration \u2013 Retrieves song lyrics for users upon request.\nUser-Friendly Commands \u2013 Simple bot commands for easy interaction via text channels",
     "images": [
       "/images/project/discordbot/image.png",
       "/images/project/discordbot/image (1).png",
@@ -195,6 +307,241 @@
     "thumbnail": "/images/thumbnail/discordbot.svg",
     "projectLink": "",
     "type": "web",
-    "icons": [1, 2, 3, 11, 24, 28, 30]
+    "icons": [
+      1,
+      2,
+      3,
+      11,
+      24,
+      28,
+      30
+    ]
+  },
+  {
+    "title": "Brain Intracranial Hemorrhage AI Segmentation",
+    "description": "An end-to-end AI medical platform designed to help clinicians automatically detect brain hemorrhages from CT scans, developed as part of a high-impact research submission for IEEE TMI.",
+    "feature": "Engineered a custom SE(2) Equivariant architecture to maximize detection precision.\nParallelized massive deep learning workloads across multiple GPUs to bypass hardware limitations.\nDeveloped a resilient, auto-resuming data pipeline capable of surviving unpredictable cloud server failures.\nDesigned a custom learning algorithm to tackle highly imbalanced medical datasets.\nBridged the gap between clinical usability and complex AI models by designing a real-time tensor conversion backend.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/brain-ctc-seg",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [],
+    "cv description": [
+      "Boosted segmentation accuracy (IoU) by 63% and boundary precision (Surface Dice) by 6.2% by architecting a custom SE(2) Group Equivariant CNN with 2.5D spatial stacking.",
+      "Executed a rigorous, large-scale experimental pipeline across a 5-Fold Cross Validation setup, benchmarking 12 novel ablation architectures against 6 industry baselines (including nnU-Net)."
+    ]
+  },
+  {
+    "title": "ColonoMind: Hierarchical AI for Ulcerative Colitis Severity Grading",
+    "description": "An advanced endoscopic image classification platform engineered to automatically grade Ulcerative Colitis severity (Mayo Endoscopic Score) from colonoscopy scans, specifically designed to overcome extreme clinical data imbalances.",
+    "feature": "Engineered a custom Mod-SE V2 architecture integrating Convolutional Block Attention Modules (CBAM) and Residual connections to pinpoint micro-ulcers.\nDesigned a Two-Stage Hierarchical pipeline (Detector & Grader) to mathematically isolate severe class imbalance, achieving >80% accuracy.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonomind-train",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [],
+    "cv description": []
+  },
+  {
+    "title": "Sinus CT AI Segmentation & Foundation Model Benchmarking",
+    "description": "An end-to-end medical AI training and evaluation pipeline for automated sinus structure segmentation, benchmarking standard CNN frameworks against modern prompt-based foundation models (SAM-Med3D).",
+    "feature": "Architected an automated multi-stage dataset preparation pipeline for both nnU-Net and SAM-Med3D native compatibility.\nEngineered a robust standalone evaluation script to calculate complex spatial metrics (Dice, IoU, HD95, ASD) from 3D NIfTI predictions.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/sinus-ct-train",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "pytorch",
+      "bash"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "ColonoMind: Hybrid AI Diagnostic Agent for Ulcerative Colitis",
+    "description": "An interactive clinical decision support platform that evaluates colonoscopy images using a hybrid ensemble of deep learning foundation models and handcrafted texture analysis to predict Mayo Endoscopic Scores (MES).",
+    "feature": "Architected a Streamlit clinical dashboard with real-time inference and dynamic visual analytics.\nEngineered a hybrid feature extraction pipeline combining Deep Learning CNN/ViT embeddings with PyWavelets and GLCM texture features.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonomind-comparasion",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "keras",
+      "opencv",
+      "scikit-learn",
+      "plotly"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "ColonoSense: Autonomous Clinical RAG Agent",
+    "description": "An autonomous AI medical decision-support platform that utilizes Model Context Protocol (MCP) and Retrieval-Augmented Generation (RAG) to safely analyze Ulcerative Colitis patient data against global clinical guidelines.",
+    "feature": "Architected an autonomous Medical Decision-Support Agent using Model Context Protocol (MCP) and Langchain.\nEngineered a deterministic 'Structured Patient Anchor' extraction pipeline to completely eliminate LLM hallucination on sensitive medical data.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/mcp-rag-server",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "langchain",
+      "ollama",
+      "chromadb",
+      "pandas"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "LDCT-LUNA: Multi-Task AI Lung Nodule Diagnostician",
+    "description": "An AI-powered diagnostic platform that leverages a multi-task SE(2) equivariant architecture and Explainable AI (Grad-CAM) to simultaneously segment and classify lung nodules from Low Dose CT (LDCT) scans.",
+    "feature": "Engineered a multi-task Mod-Seg-SE(2) CNN architecture for simultaneous lung nodule classification and segmentation.\nImplemented an Explainable AI (XAI) pipeline using Grad-CAM to dynamically highlight model decision regions over segmented areas.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/ldct-luna",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "tensorflow",
+      "opencv",
+      "openai"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "ColonoMind - AI Clinical Decision Support",
+    "description": "An AI-powered clinical decision support mobile application designed to assist healthcare professionals in analyzing colonoscopy imagery, featuring LLM-based generative reporting and FHIR integration.",
+    "feature": "Architected a strict Clinical RAG pipeline ('ColonoTalk') for automated generative reporting.\nIntegrated a complete FHIR R4 Bundle export to ensure interoperability with hospital EHR systems.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonoscan-mobile",
+    "thumbnail": "",
+    "type": "mobile-app",
+    "icons": [],
+    "cv description": []
+  },
+  {
+    "title": "Nero ",
+    "description": "An end-to-end iOS application designed for visual vocabulary learning, published independently to the App Store targeting a specific educational niche.",
+    "feature": "Engineered a robust MVVM architecture for clean separation of concerns.\nIntegrated CoreData/Realm for seamless offline functionality.\nImplemented Swift Concurrency for highly optimized data fetching.\nStrictly adhered to Apple Human Interface Guidelines for a native, premium feel.",
+    "images": [
+      "/ios/nero/Porto Copy 4.png",
+      "/ios/nero/Porto Copy 5.png",
+      "/ios/nero/Porto Copy.png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/ios/nero/thumbnail.png",
+    "type": "ios",
+    "icons": [
+      "SwiftUI",
+      "UIKit",
+      "CoreData",
+      "Combine"
+    ],
+    "cv description": [
+      "Developed and launched an end-to-end vocabulary learning application to the App Store, achieving a 99.8% crash-free rate since its initial release while strictly adhering to Apple Human Interface Guidelines.",
+      "Decoupled business logic from the UI using the MVVM (Model-View-ViewModel) architecture, which reduced code boilerplate and accelerated new feature development by 30%.",
+      "Integrated local storage (CoreData/Realm) to enable seamless offline functionality, improving daily user retention and reducing data retrieval latency by 40%.",
+      "Optimized asynchronous data execution using Swift Concurrency, cutting the initial app load time by 25%."
+    ]
+  },
+  {
+    "title": "Kenbo",
+    "description": "A gamified health and productivity iOS app utilizing on-device ARKit facial tracking to monitor eye and head movements for interactive task engagement.",
+    "feature": "Integrated ARKit ARFaceTrackingConfiguration for real-time blink and rotation tracking.\nEngineered a dynamic quest and streak scheduler to gamify health tasks.\nDeveloped a custom AI service wrapper for real-time metric processing.\nUtilized state-driven MVVM to handle complex live face-tracking data concurrently.",
+    "images": [
+      "/ios/Kenbo/Invitation-2.png",
+      "/ios/Kenbo/Invitation-3.png",
+      "/ios/Kenbo/Invitation-4.png",
+      "/ios/Kenbo/Invitation.png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/ios/Kenbo/thumbnail.png",
+    "type": "ios",
+    "icons": [
+      "SwiftUI",
+      "ARKit",
+      "CoreML",
+      "Vision"
+    ],
+    "cv description": [
+      "Integrated ARKit face tracking (ARFaceTrackingConfiguration) to capture real-time user facial expressions and head movements, achieving high-accuracy detection for blink and rotation tracking.",
+      "Engineered gamified health/productivity task logic (EyeTask, HeadTask) coupled with a dynamic quest scheduler, driving continuous user engagement through a robust streak tracking system.",
+      "Designed a custom AI Service wrapper to process user metrics and provide real-time interactive feedback, optimizing the data analysis flow with minimal processing latency.",
+      "Implemented state-driven MVVM architecture to manage complex user preferences and live face-tracking data concurrently, reducing UI state inconsistencies by up to 40%."
+    ]
+  },
+  {
+    "title": "Mirsa",
+    "description": "An accessibility-focused utility app featuring on-device Optical Character Recognition (OCR) and speech processing to facilitate inclusive user interactions.",
+    "feature": "Implemented instant image-to-text parsing using native OCR technologies.\nIntegrated local Speech-to-Text and Text-to-Speech via Foundation APIs.\nBuilt a modular UI component library using the Atomic Design pattern.\nEngineered centralized state management for real-time natural language processing.",
+    "images": [
+      "/ios/mirsa/Porto Copy 11.png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/ios/mirsa/thumbnail.png",
+    "type": "ios",
+    "icons": [
+      "SwiftUI",
+      "Vision",
+      "Speech",
+      "NaturalLanguage"
+    ],
+    "cv description": [
+      "Implemented Optical Character Recognition (OCR) technology to scan images and documents instantly, increasing text parsing accuracy up to 95% during the TestFlight beta phase.",
+      "Integrated local Speech-to-Text (STT) and Text-to-Speech (TTS) services via Foundation APIs, creating an inclusive interface and reducing manual user input time by 40%.",
+      "Engineered a modular UI structure using the Atomic Design pattern (Atoms, Molecules, Organisms) in SwiftUI, accelerating component assembly and new screen creation by 35%.",
+      "Optimized state management execution (FoundationState) within a centralized architecture, achieving real-time speech and image processing with a delay of under 500 milliseconds."
+    ]
+  },
+  {
+    "title": "Sketsain",
+    "description": "A 3D and visual design iOS application built with a heavily modular architecture to accelerate prototyping and ensure long-term codebase scalability.",
+    "feature": "Architected a modular foundation from scratch for rendering graphic assets.\nDeveloped a comprehensive library of reusable SwiftUI components.\nDeployed an adaptive view architecture optimized for legacy devices.\nCompleted MVP integrations significantly ahead of project schedules.",
+    "images": [
+      "/ios/sketsain/Porto Copy 8.png",
+      "/ios/sketsain/Porto Copy 9.png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/ios/sketsain/thumbnail.png",
+    "type": "ios",
+    "icons": [
+      "SwiftUI",
+      "UIKit",
+      "CoreGraphics",
+      "PencilKit"
+    ],
+    "cv description": [
+      "Architected a modular system foundation from scratch to support the development of a design/visual application, increasing code maintenance efficiency by 30%.",
+      "Developed a library of reusable UI components, accelerating the screen prototyping process by up to 50%.",
+      "Completed the Minimum Viable Product (MVP) integration phase 2 weeks ahead of the project schedule, enabled by a clean and highly organized codebase.",
+      "Deployed an adaptive view architecture that renders initial interface assets 20% faster than conventional approaches on legacy devices."
+    ]
+  },
+  {
+    "title": "Bara",
+    "description": "An advanced productivity and focus management app that leverages Apple's Screen Time APIs and WidgetKit to monitor and restrict app usage effectively.",
+    "feature": "Integrated FamilyControls and ManagedSettings to strictly restrict app usage.\nDeveloped interactive Live Activities and WidgetKit extensions.\nEngineered custom Shield Actions and Configurations for seamless app blocking.\nIsolated session management logic using a strict MVVM pattern.",
+    "images": [
+      "/ios/bara/Porto Copy 2.png",
+      "/ios/bara/Porto Copy.png",
+      "/ios/bara/Porto.png"
+    ],
+    "projectLink": "",
+    "thumbnail": "/ios/bara/thumbnail.png",
+    "type": "ios",
+    "icons": [
+      "SwiftUI",
+      "FamilyControls",
+      "ManagedSettings",
+      "WidgetKit"
+    ],
+    "cv description": [
+      "Integrated advanced productivity management features using Apple's Screen Time framework (FamilyControls, ManagedSettings, and DeviceActivity) to effectively restrict and monitor app usage.",
+      "Developed comprehensive WidgetKit extensions, including Live Activities functionality, to display user focus session durations (TimeCountWidget) directly from the Lock Screen and Dynamic Island.",
+      "Isolated WorkSession management logic within an MVVM structure coupled with an Atomic Design interface approach in SwiftUI, reducing UI design code redundancy by 40%.",
+      "Implemented custom Shield Actions and Shield Configurations for a seamless app blocker interface, maintaining smooth shield transition performance under 300 milliseconds without excessive memory overhead."
+    ]
   }
 ]

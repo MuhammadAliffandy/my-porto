@@ -26,7 +26,7 @@ const ProjectView: React.FC<ProjectViewProps> = (props) => {
 
   const handleGetIcons = () => {
     const icons: any[] = iconPortofolio.filter(
-      (data) => portfolio[projectId].icons.indexOf(data.id) !== -1
+      (data) => (portfolio[projectId].icons as any[]).includes(data.id)
     );
 
     setIconData(icons);

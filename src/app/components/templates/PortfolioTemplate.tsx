@@ -8,60 +8,12 @@ import { ProjectData } from "@/app/components/organisms/ProjectModal/ProjectModa
 import ProjectDetailView from "@/app/components/organisms/ProjectModal/ProjectDetailView";
 import Stack from "@/app/components/atoms/Stack/Stack";
 import LineSidebar from "@/app/components/organisms/LineSidebar/LineSidebar";
-import portfolioData from "../../../../../portfolio.json";
 import { useRef, useState, useEffect, ReactNode } from "react";
 import BookLayout from "@/app/components/organisms/BookLayout/BookLayout";
 
-const experienceItems = [
-  {
-    company: "PUKULENAM", role: "FULLSTACK ENGINEER",
-    meta: "SOFTWARE ENGINEERING · AUG 2025 - PRESENT",
-    title: "Engineering for performance",
-    description: "Optimized API data queries using ORM to achieve 50% faster retrieval and accelerated CRUD processes by 60% through a functional component-based UI. Automated batch retrieval of 500+ records using n8n, cutting execution time from over two hours to just 70 minutes. Integrated Twilio telephony into the CRM to streamline workflows and delivered classification reports to mitigate model bias.",
-  },
-  {
-    company: "PUKULENAM", role: "FRONTEND ENGINEER",
-    meta: "FRONTEND DEVELOPMENT · JUN 2025 - PRESENT",
-    title: "Scalable interfaces at speed",
-    description: "Developed an Admin CRUD service using React and Chakra UI, serving active user management for 500+ records. Built a reusable Atomic Design component library that reduced code duplication by 30%. Redesigned the core application interface with modern motion animations, responsive layouts, and integrated secure JWT authentication.",
-  },
-  {
-    company: "ALGORITHMICS INDONESIA", role: "CODING TUTOR",
-    meta: "EDUCATION · MAY 2025 - SEP 2025",
-    title: "Mentoring the next generation",
-    description: "Mentored students in Python and visual programming (Scratch), improving algorithm comprehension by 65%. Guided students to successfully complete monthly projects, achieving an 86% monthly attendance rate and significantly enhancing their technical presentation skills.",
-  },
-  {
-    company: "PT. ADMA DIGITAL SOLUSI", role: "FRONTEND ENGINEER",
-    meta: "WEB DEVELOPMENT · FEB 2024 - JUN 2024",
-    title: "Building CMS and multi-platform tools",
-    description: "Developed scalable Next.js projects including a CMS and Communication Management Tool that reduced manual content handling time by 40%. Connected applications with Twitter, Instagram, Facebook, and WhatsApp APIs. Optimized performance using SSR, SSG, and caching strategies to cut page load times by 15%.",
-  },
-  {
-    company: "TECHNOLOGY INFRASTRUCTURE LAB", role: "OS TEACHING ASSISTANT",
-    meta: "ACADEMIA · JAN 2024 - JUN 2024",
-    title: "Mastering system foundations",
-    description: "Mentored over 30 students in Linux Operating System concepts and practical usage. Prepared learning modules, facilitated lab sessions, and provided structural evaluations, leading to a 90% final project success rate.",
-  },
-  {
-    company: "BINAR ACADEMY", role: "FULLSTACK WEB DEVELOPER",
-    meta: "BOOTCAMP · AUG 2023 - DEC 2023",
-    title: "Developing educational platforms",
-    description: "Collaborated on a Massive Open Online Course (MOOC) platform. Built Database Management APIs with full CRUD functionality for courses and modules. Implemented secure admin authentication and user order management logic for verifying purchases and processing payments.",
-  },
-  {
-    company: "DSAA GROUP", role: "FRONTEND MOBILE DEVELOPER",
-    meta: "MOBILE DEVELOPMENT · JUL 2023 - AUG 2023",
-    title: "Crafting mobile experiences",
-    description: "Executed pixel-perfect UI slicing from Figma to Flutter using the Atomic Design methodology to build a reusable component library. Leveraged Dart algorithms for smooth animations and conducted thorough manual testing to significantly reduce UI-related bugs prior to release.",
-  },
-  {
-    company: "FASTWORK ID", role: "FREELANCE GRAPHIC & UI/UX DESIGNER",
-    meta: "DESIGN · JAN 2022 - JAN 2023",
-    title: "Where design meets freelance",
-    description: "Delivered custom digital products and UI/UX designs for clients on a marketplace platform. Maintained a 100% project completion rate and achieved an average client rating of 4.7/5 through continuous iteration and clear communication.",
-  },
-];
+
+
+
 
 interface StickySectionProps {
   id?: string;
@@ -145,16 +97,62 @@ const StickySection = ({ id, className, children, bgImage, containerRef }: Stick
 };
 
 
-export default function HomeView() {
+
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  meta: string;
+  title: string;
+  description: string;
+}
+
+export interface PortfolioTemplateProps {
+  heroTitleRow1: React.ReactNode;
+  heroTitleRow2: React.ReactNode;
+  heroSubtitle: string;
+  heroDescription: string;
+  aboutTitle: string;
+  aboutParagraph1: string;
+  aboutParagraph2: string;
+  workTitle: string;
+  experienceTitle: string;
+  experienceSubtitle: string;
+  experienceItems: ExperienceItem[];
+  projects: any[];
+  contactTitle?: React.ReactNode;
+  contactDescription?: React.ReactNode;
+}
+
+
+export default function PortfolioTemplate({
+  heroTitleRow1,
+  heroTitleRow2,
+  heroSubtitle,
+  heroDescription,
+  aboutTitle,
+  aboutParagraph1,
+  aboutParagraph2,
+  workTitle,
+  experienceTitle,
+  experienceSubtitle,
+  experienceItems,
+  projects,
+  contactTitle,
+  contactDescription
+}: PortfolioTemplateProps) {
   const mainRef = useRef<HTMLElement>(null);
+  const experienceScrollRef = useRef<HTMLDivElement>(null);
   const prevScrollY = useRef(0);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const [activeProject, setActiveProject] = useState<ProjectData | null>(null);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 
   // Global scroll listener for Navbar
   const { scrollYProgress } = useScroll({ container: mainRef }); // Used for parallax if needed globally
+  const { scrollYProgress: expScrollY } = useScroll({ container: experienceScrollRef });
+  const expProgressWidth = useTransform(expScrollY, [0, 1], ["0%", "100%"]);
 
   const handleScroll = (e: React.UIEvent<HTMLElement>) => {
     const currentScrollY = e.currentTarget.scrollTop;
@@ -166,6 +164,20 @@ export default function HomeView() {
       setNavVisible(true); // scrolling up or at top
     }
     prevScrollY.current = currentScrollY;
+
+    // Detect active section
+    const sections = ['anchor-home', 'anchor-about', 'anchor-work', 'anchor-experience', 'anchor-contact'];
+    let currentIdx = 0;
+    for (let i = sections.length - 1; i >= 0; i--) {
+      const el = document.getElementById(sections[i]);
+      if (el && currentScrollY >= el.offsetTop - window.innerHeight * 0.4) {
+        currentIdx = i;
+        break;
+      }
+    }
+    
+    // Only update if changed to avoid unnecessary re-renders
+    setActiveSectionIndex(prev => prev !== currentIdx ? currentIdx : prev);
   };
 
   const scrollAnimationRef = useRef<any>(null);
@@ -220,6 +232,7 @@ export default function HomeView() {
           itemGap={16}
           markerLength={35}
           maxShift={20}
+          activeIndex={activeSectionIndex}
           onItemClick={(index, label) => {
             const idMap: Record<string, string> = {
               'home': 'home',
@@ -284,15 +297,14 @@ export default function HomeView() {
               className="flex flex-col gap-6 w-full lg:w-[45%] relative z-10"
             >
               <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-accent uppercase">
-                Fullstack Engineer &middot; Web &amp; Mobile Development
+                {heroSubtitle}
                 <br />ID <span className="text-accent mx-1">*</span> 2026
               </div>
               <h1 className="font-medieval text-6xl md:text-[6rem] lg:text-[7.5rem] font-semibold leading-[0.85] tracking-tight mt-4">
-                Muhammad<br /><span className="text-muted">Aliffandy</span>
+                {heroTitleRow1}<br /><span className="text-muted">{heroTitleRow2}</span>
               </h1>
-              <p className="mt-8 text-lg md:text-xl max-w-xl text-muted font-lora leading-relaxed">
-                Crafting high-performance web applications and robust mobile experiences.
-                I build scalable systems where sophisticated design meets deep engineering craft.
+              <p className="mt-8 text-lg md:text-xl max-w-xl text-muted font-lora leading-relaxed whitespace-pre-wrap">
+                {heroDescription}
               </p>
               <div className="flex flex-wrap items-center gap-6 mt-12">
                 <a href="#work" className="px-8 py-4 bg-accent/10 border-double border-4 border-accent text-accent rounded-sm font-medieval font-bold text-sm tracking-widest hover:bg-accent hover:text-background transition-all duration-300 shadow-[0_0_15px_rgba(200,169,81,0.2)]">All Projects</a>
@@ -402,7 +414,7 @@ export default function HomeView() {
                       ref={carouselRef}
                       className="flex overflow-x-auto gap-6 pb-12 w-full px-4 md:px-0 [&::-webkit-scrollbar]:h-[6px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#4A3F35] hover:[&::-webkit-scrollbar-thumb]:bg-accent"
                     >
-                      {portfolioData.map((p, i) => (
+                      {projects.map((p, i) => (
                         <div key={i} className="w-[85vw] md:w-[350px] lg:w-[400px] shrink-0 flex relative">
                           <AppProjectCard 
                             index={i} 
@@ -420,7 +432,7 @@ export default function HomeView() {
                   <ProjectDetailView 
                     key="detail"
                     project={activeProject} 
-                    allProjects={portfolioData as ProjectData[]}
+                    allProjects={projects}
                     onSelectProject={setActiveProject}
                     onClose={() => setActiveProject(null)} 
                   />
@@ -450,15 +462,24 @@ export default function HomeView() {
                 <span>PAST</span><span>PRESENT</span>
               </div>
               <div className="w-full h-[1px] bg-[#222] relative">
-                <div className="absolute top-0 left-0 h-[1px] bg-accent w-full" />
+                <motion.div 
+                  className="absolute top-0 left-0 h-[2px] bg-accent shadow-[0_0_8px_#d4af37]" 
+                  style={{ width: expProgressWidth }}
+                />
               </div>
             </div>
 
             {/* Right inner-scroll column */}
-            <div className="w-full lg:flex-[2] flex-shrink-0 pr-0 md:pr-4 relative h-[70vh] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#333] hover:[&::-webkit-scrollbar-thumb]:bg-accent">
+            <div 
+              ref={experienceScrollRef}
+              className="w-full lg:flex-[2] flex-shrink-0 pr-0 md:pr-4 relative h-[70vh] overflow-y-auto [&::-webkit-scrollbar]:w-[2px] [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#333] hover:[&::-webkit-scrollbar-thumb]:bg-accent"
+            >
               <div className="relative border-l-2 border-double border-[#4A3F35] pl-8 md:pl-16 ml-4 md:ml-8 flex flex-col gap-20 py-4">
                 {experienceItems.map((item, idx) => (
-                  <div key={idx} className="relative group">
+                  <div 
+                    key={idx} 
+                    className="relative group"
+                  >
                     <div className="absolute -left-[48px] md:-left-[80px] top-1 w-8 h-8 rotate-45 bg-[#4A3F35] border-2 border-accent group-hover:bg-accent transition-colors duration-300 ring-4 ring-[#0F0C0A]" />
                     <div className="font-mono text-[10px] tracking-widest uppercase mb-4 flex flex-col gap-1">
                       <span className="text-[#649a9e] group-hover:text-accent transition-colors duration-300">{item.company} &middot; {item.role}</span>

@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Brain Intracranial Hemorrhage AI Segmentation",
+    "description": "An end-to-end AI medical platform designed to help clinicians automatically detect brain hemorrhages from CT scans, developed as part of a high-impact research submission for IEEE TMI.",
+    "feature": "Engineered a custom SE(2) Equivariant architecture to maximize detection precision.\nParallelized massive deep learning workloads across multiple GPUs to bypass hardware limitations.\nDeveloped a resilient, auto-resuming data pipeline capable of surviving unpredictable cloud server failures.\nDesigned a custom learning algorithm to tackle highly imbalanced medical datasets.\nBridged the gap between clinical usability and complex AI models by designing a real-time tensor conversion backend.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/brain-ctc-seg",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [],
+    "cv description": [
+      "Boosted segmentation accuracy (IoU) by 63% and boundary precision (Surface Dice) by 6.2% by architecting a custom SE(2) Group Equivariant CNN with 2.5D spatial stacking.",
+      "Executed a rigorous, large-scale experimental pipeline across a 5-Fold Cross Validation setup, benchmarking 12 novel ablation architectures against 6 industry baselines (including nnU-Net)."
+    ]
+  },
+  {
+    "title": "ColonoMind: Hierarchical AI for Ulcerative Colitis Severity Grading",
+    "description": "An advanced endoscopic image classification platform engineered to automatically grade Ulcerative Colitis severity (Mayo Endoscopic Score) from colonoscopy scans, specifically designed to overcome extreme clinical data imbalances.",
+    "feature": "Engineered a custom Mod-SE V2 architecture integrating Convolutional Block Attention Modules (CBAM) and Residual connections to pinpoint micro-ulcers.\nDesigned a Two-Stage Hierarchical pipeline (Detector & Grader) to mathematically isolate severe class imbalance, achieving >80% accuracy.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonomind-train",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [],
+    "cv description": []
+  },
+  {
+    "title": "Sinus CT AI Segmentation & Foundation Model Benchmarking",
+    "description": "An end-to-end medical AI training and evaluation pipeline for automated sinus structure segmentation, benchmarking standard CNN frameworks against modern prompt-based foundation models (SAM-Med3D).",
+    "feature": "Architected an automated multi-stage dataset preparation pipeline for both nnU-Net and SAM-Med3D native compatibility.\nEngineered a robust standalone evaluation script to calculate complex spatial metrics (Dice, IoU, HD95, ASD) from 3D NIfTI predictions.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/sinus-ct-train",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": ["python", "pytorch", "bash"],
+    "cv description": []
+  },
+  {
+    "title": "ColonoMind: Hybrid AI Diagnostic Agent for Ulcerative Colitis",
+    "description": "An interactive clinical decision support platform that evaluates colonoscopy images using a hybrid ensemble of deep learning foundation models and handcrafted texture analysis to predict Mayo Endoscopic Scores (MES).",
+    "feature": "Architected a Streamlit clinical dashboard with real-time inference and dynamic visual analytics.\nEngineered a hybrid feature extraction pipeline combining Deep Learning CNN/ViT embeddings with PyWavelets and GLCM texture features.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonomind-comparasion",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "keras",
+      "opencv",
+      "scikit-learn",
+      "plotly"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "ColonoSense: Autonomous Clinical RAG Agent",
+    "description": "An autonomous AI medical decision-support platform that utilizes Model Context Protocol (MCP) and Retrieval-Augmented Generation (RAG) to safely analyze Ulcerative Colitis patient data against global clinical guidelines.",
+    "feature": "Architected an autonomous Medical Decision-Support Agent using Model Context Protocol (MCP) and Langchain.\nEngineered a deterministic 'Structured Patient Anchor' extraction pipeline to completely eliminate LLM hallucination on sensitive medical data.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/mcp-rag-server",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "langchain",
+      "ollama",
+      "chromadb",
+      "pandas"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "LDCT-LUNA: Multi-Task AI Lung Nodule Diagnostician",
+    "description": "An AI-powered diagnostic platform that leverages a multi-task SE(2) equivariant architecture and Explainable AI (Grad-CAM) to simultaneously segment and classify lung nodules from Low Dose CT (LDCT) scans.",
+    "feature": "Engineered a multi-task Mod-Seg-SE(2) CNN architecture for simultaneous lung nodule classification and segmentation.\nImplemented an Explainable AI (XAI) pipeline using Grad-CAM to dynamically highlight model decision regions over segmented areas.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/ldct-luna",
+    "thumbnail": "",
+    "type": "machine-learning",
+    "icons": [
+      "python",
+      "streamlit",
+      "tensorflow",
+      "opencv",
+      "openai"
+    ],
+    "cv description": []
+  },
+  {
+    "title": "ColonoMind - AI Clinical Decision Support",
+    "description": "An AI-powered clinical decision support mobile application designed to assist healthcare professionals in analyzing colonoscopy imagery, featuring LLM-based generative reporting and FHIR integration.",
+    "feature": "Architected a strict Clinical RAG pipeline ('ColonoTalk') for automated generative reporting.\nIntegrated a complete FHIR R4 Bundle export to ensure interoperability with hospital EHR systems.",
+    "images": [],
+    "projectLink": "https://github.com/MuhammadAliffandy/colonoscan-mobile",
+    "thumbnail": "",
+    "type": "mobile-app",
+    "icons": [],
+    "cv description": []
+  }
+]

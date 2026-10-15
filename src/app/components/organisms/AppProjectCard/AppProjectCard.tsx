@@ -29,20 +29,24 @@ export default function AppProjectCard({ index, title, description, thumbnail, t
       onClick={onClick}
       ref={cardRef}
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="group w-full flex flex-col bg-[#14110E] rounded-sm border-double border-[6px] border-[#2A241E] overflow-hidden hover:border-accent transition-colors duration-300 cursor-pointer h-full shadow-lg hover:shadow-[0_0_20px_rgba(200,169,81,0.15)]"
     >
-      {/* Image Section with Parallax */}
-      <div className="w-full aspect-[4/3] overflow-hidden bg-[#111] relative border-b-4 border-double border-[#2A241E] group-hover:border-accent transition-colors duration-300">
-        <motion.div style={{ y: imageY, width: '100%', height: '100%', willChange: "transform" }} className="scale-[1.25]">
-          <img
-            src={thumbnail}
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-          />
-        </motion.div>
+      {/* Image Section */}
+      <div className="w-full aspect-[16/10] overflow-hidden bg-[#111] relative border-b-4 border-double border-[#2A241E] group-hover:border-accent transition-colors duration-300">
+        <div 
+          style={{ 
+            width: '100%', 
+            height: '100%', 
+            backgroundImage: thumbnail ? `url('${thumbnail}')` : 'none'
+          }} 
+          className="flex items-center justify-center bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-[1.05]"
+        >
+          {!thumbnail && (
+            <Icon icon="game-icons:open-book" className="text-6xl text-[#2A241E] opacity-50" />
+          )}
+        </div>
       </div>
 
       {/* Text Section */}
