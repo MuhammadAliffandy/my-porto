@@ -8,6 +8,13 @@ export interface ExperienceItem {
 
 export const masterExperience: ExperienceItem[] = [
   {
+    company: "APPLE DEVELOPER ACADEMY",
+    role: "IOS DEVELOPER",
+    meta: "APPLE ECOSYSTEM · MAR 2026 - PRESENT",
+    title: "Engineering native Apple ecosystem solutions",
+    description: "Selected for Apple's intensive software engineering cohort. Engineered and published native iOS applications (Bara, Kenbo, Mirsa, Nero) leveraging SwiftUI, Swift Concurrency, ARKit, Vision OCR, and Screen Time APIs. Collaborated in multi-disciplinary teams applying Challenge-Based Learning (CBL) and strict Apple Human Interface Guidelines to ship high-impact digital experiences.",
+  },
+  {
     company: "PUKULENAM",
     role: "FULLSTACK ENGINEER",
     meta: "SOFTWARE ENGINEERING · AUG 2025 - PRESENT",
