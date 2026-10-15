@@ -98,13 +98,14 @@ const StickySection = ({ id, className, children, bgImage, containerRef }: Stick
 
 
 
-export interface ExperienceItem {
-  company: string;
-  role: string;
-  meta: string;
-  title: string;
-  description: string;
-}
+import { 
+  ExperienceItem, 
+  masterExperience, 
+  defaultExperienceTitle, 
+  defaultExperienceSubtitle 
+} from "@/app/data/experience";
+
+export type { ExperienceItem };
 
 export interface PortfolioTemplateProps {
   heroTitleRow1: React.ReactNode;
@@ -115,9 +116,9 @@ export interface PortfolioTemplateProps {
   aboutParagraph1: string;
   aboutParagraph2: string;
   workTitle: string;
-  experienceTitle: string;
-  experienceSubtitle: string;
-  experienceItems: ExperienceItem[];
+  experienceTitle?: string;
+  experienceSubtitle?: string;
+  experienceItems?: ExperienceItem[];
   projects: any[];
   contactTitle?: React.ReactNode;
   contactDescription?: React.ReactNode;
@@ -133,9 +134,9 @@ export default function PortfolioTemplate({
   aboutParagraph1,
   aboutParagraph2,
   workTitle,
-  experienceTitle,
-  experienceSubtitle,
-  experienceItems,
+  experienceTitle = defaultExperienceTitle,
+  experienceSubtitle = defaultExperienceSubtitle,
+  experienceItems = masterExperience,
   projects,
   contactTitle,
   contactDescription

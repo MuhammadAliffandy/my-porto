@@ -1,6 +1,7 @@
 import PortfolioTemplate from "@/app/components/templates/PortfolioTemplate";
 import portfolioData from "../../../portfolio.json";
 import { ProjectData } from "@/app/components/organisms/ProjectModal/ProjectModal";
+import { masterExperience, defaultExperienceTitle, defaultExperienceSubtitle } from "@/app/data/experience";
 
 export default function IOSPortfolio() {
   return (
@@ -13,17 +14,9 @@ export default function IOSPortfolio() {
       aboutParagraph1="I am passionate about the Apple ecosystem and native mobile development."
       aboutParagraph2="My focus is on writing clean, modular Swift code and building apps that feel perfectly at home on iPhone and iPad."
       workTitle="iOS & Mobile Projects."
-      experienceTitle="My Mobile Journey"
-      experienceSubtitle="Building high-quality applications for the App Store."
-      experienceItems={[
-        {
-          company: "DSAA GROUP",
-          role: "MOBILE DEVELOPER",
-          meta: "MOBILE DEVELOPMENT · 2023",
-          title: "Crafting mobile experiences",
-          description: "Executed pixel-perfect UI slicing from Figma using Atomic Design methodology to build a reusable component library."
-        }
-      ]}
+      experienceTitle={defaultExperienceTitle}
+      experienceSubtitle={defaultExperienceSubtitle}
+      experienceItems={masterExperience}
       projects={(portfolioData as ProjectData[]).filter(p => ['mobile-app', 'ios'].includes(p.type))}
       contactTitle={<>Need a native <span className="font-medieval text-accent">iOS</span> application?</>}
       contactDescription="Let's build something amazing for the App Store."
